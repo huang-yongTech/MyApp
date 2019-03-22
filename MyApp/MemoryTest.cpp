@@ -31,7 +31,7 @@ MemoryTest::MemoryTest(ifstream &fileStream) :filesVectorP(new vector<string>) {
 
 //¿ªÊ¼²éÑ¯
 void MemoryTest::runQuries() const {
-	ifstream fileStream("D:\\AndroidDev\\CppSource\\MemoryExample.txt");
+	ifstream fileStream("D:\\AndroidDev\\CppSource\\MyApp\\outerfile\\MemoryExample.txt");
 	runQuries(fileStream);
 }
 

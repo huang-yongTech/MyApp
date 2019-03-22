@@ -10,8 +10,8 @@ MapTest::~MapTest() {
 }
 
 void MapTest::wordTransform() const {
-	ifstream fileStream("D:\\AndroidDev\\CppSource\\convert.txt");
-	ifstream inputStream("D:\\AndroidDev\\CppSource\\source.txt");
+	ifstream fileStream("D:\\AndroidDev\\CppSource\\MyApp\\outerfile\\convert.txt");
+	ifstream inputStream("D:\\AndroidDev\\CppSource\\MyApp\\outerfile\\source.txt");
 
 	if (fileStream && inputStream) {
 		cout << "开始单词转换" << endl;

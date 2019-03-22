@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AlgorithmTest.h" />
+    <ClInclude Include="CopyControlTest.h" />
     <ClInclude Include="MapTest.h" />
     <ClInclude Include="MemoryResult.h" />
     <ClInclude Include="MemoryTest.h" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlgorithmTest.cpp" />
+    <ClCompile Include="CopyControlTest.cpp" />
     <ClCompile Include="MapTest.cpp" />
     <ClCompile Include="MemoryResult.cpp" />
     <ClCompile Include="MemoryTest.cpp" />
