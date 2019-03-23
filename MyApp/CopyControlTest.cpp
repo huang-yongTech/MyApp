@@ -19,8 +19,10 @@ CopyControlTest::CopyControlTest(const CopyControlTest &copyControl) {
 	
 	//Éî¿½±´
 	s = copyControl.s;
-	ptr = new string();
-	*ptr = *(copyControl.ptr);
+
+	auto newPtr = new string(*copyControl.ptr);
+	delete ptr;
+	ptr = newPtr;
 }
 
 CopyControlTest & CopyControlTest::operator=(const CopyControlTest &copyControl) {
@@ -32,8 +34,10 @@ CopyControlTest & CopyControlTest::operator=(const CopyControlTest &copyControl)
 
 	//Éî¿½±´
 	s = copyControl.s;
-	ptr = new string();
-	*ptr = *(copyControl.ptr);
+
+	auto newPtr = new string(*copyControl.ptr);
+	delete ptr;
+	ptr = newPtr;
 
 	return *this;
 }

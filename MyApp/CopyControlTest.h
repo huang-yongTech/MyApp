@@ -15,10 +15,10 @@ public:
 	CopyControlTest(string s, string *ptr);
 
 	//拷贝构造函数
-	CopyControlTest(const CopyControlTest &);
+	CopyControlTest(const CopyControlTest &copyControl);
 
 	//拷贝赋值运算符
-	CopyControlTest & operator=(const CopyControlTest &);
+	CopyControlTest & operator=(const CopyControlTest &copyControl);
 
 	//打印
 	void print();
