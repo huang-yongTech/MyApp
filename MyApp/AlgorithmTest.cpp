@@ -7,10 +7,6 @@
 #include <vector>
 
 using namespace std;
-using std::cout;
-using std::endl;
-using std::list;
-using std::vector;
 
 AlgorithmTest::~AlgorithmTest()
 {
@@ -23,7 +19,7 @@ void AlgorithmTest::lambdaTest() {
 	//lambda表达式最好显示指定返回类型（使用尾置返回类型）
 	auto f1 = [v1]() mutable -> int {return ++v1; };
 	v1 = 0;
-	cout << "lambda表达式运行结果：" << f1() << endl;
+	cout << "lambda表达式的运行结果：" << f1() << endl;
 }
 
 void AlgorithmTest::inserterTest() {

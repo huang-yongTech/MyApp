@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _MEMORY_TEST_H_
+#define _MEMORY_TEST_H_
+
 #include <map>
 #include "MemoryResult.h"
 
@@ -25,4 +27,6 @@ private:
 	map<string, shared_ptr<set<lineNo>>> linesMap;//单词与其所在行号的映射
 	shared_ptr<vector<string>> filesVectorP;//输入文件
 };
+
+#endif
 

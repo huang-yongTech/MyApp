@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _MEMORY_RESULT_H_
+#define _MEMORY_RESULT_H_
+
 #include <vector>
 #include <set>
 #include <memory>
@@ -6,7 +8,7 @@
 using namespace std;
 
 class MemoryResult {
-friend ostream & print(ostream &os, const MemoryResult &result);
+	friend ostream & print(ostream &os, const MemoryResult &result);
 public:
 	using lineNo = vector<string>::size_type;
 	MemoryResult(string word, shared_ptr<set<lineNo>> linesSetP, shared_ptr<vector<string>> fileVectorP);
@@ -25,4 +27,6 @@ private:
 //这里需要注意，由于函数中第二个参数为MemoryResult对象，
 //而该函数又不是MemoryResult的成员，因此需要将其声明为MemoryResult的友元
 ostream & print(ostream &os, const MemoryResult &result);
+
+#endif // _MEMORY_RESULT_H_
 

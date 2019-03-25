@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _MAP_TEST_H_
+#define _MAP_TEST_H_
+
 #include <map>
 
 using namespace std;
@@ -25,4 +27,6 @@ public:
 	*/
 	const string & transform(const string &s, map<string, string> &convertMap) const;
 };
+
+#endif
 

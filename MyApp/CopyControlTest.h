@@ -1,11 +1,13 @@
-#pragma once
+#ifndef _COPY_CONTROL_TEST_H_
+#define _COPY_CONTROL_TEST_H_
+
 #include <string>
 
 using namespace std;
 
 class CopyControlTest {
 
-friend CopyControlTest & copyControl(CopyControlTest copyControl);
+	friend CopyControlTest copyControl(CopyControlTest copyControl);
 
 public:
 	//默认构造函数
@@ -18,7 +20,7 @@ public:
 	CopyControlTest(const CopyControlTest &copyControl);
 
 	//拷贝赋值运算符
-	CopyControlTest & operator=(const CopyControlTest &copyControl);
+	CopyControlTest& operator=(const CopyControlTest &copyControl);
 
 	//打印
 	void print();
@@ -28,11 +30,12 @@ public:
 
 private:
 	//普通成员变量
-	string s;
+	string s = "";
 	//指针成员变量
-	string *ptr;
+	string *ptr = nullptr;
 };
 
 //拷贝
-CopyControlTest & copyControl(CopyControlTest copyControl);
+CopyControlTest copyControl(CopyControlTest copyControl);
 
+#endif
