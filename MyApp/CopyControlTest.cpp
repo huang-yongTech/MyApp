@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "CopyControlTest.h"
-#include <iostream>
 
 CopyControlTest::CopyControlTest() {
 	cout << "调用无参数构造函数" << endl;
