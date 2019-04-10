@@ -159,6 +159,7 @@
     <ClInclude Include="MemoryResult.h" />
     <ClInclude Include="MemoryTest.h" />
     <ClInclude Include="Message.h" />
+    <ClInclude Include="MyString.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StrVec.h" />
   </ItemGroup>
@@ -172,6 +173,7 @@
     <ClCompile Include="MemoryTest.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="MyApp.cpp" />
+    <ClCompile Include="MyString.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
