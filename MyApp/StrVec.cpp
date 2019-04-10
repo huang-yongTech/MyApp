@@ -37,6 +37,7 @@ StrVec& StrVec::operator=(const StrVec& strVec) {
 }
 
 StrVec::~StrVec() {
+	free();
 }
 
 //添加一个元素

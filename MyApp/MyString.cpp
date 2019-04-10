@@ -41,6 +41,7 @@ MyString& MyString::operator=(const MyString &myString) {
 }
 
 MyString::~MyString() {
+	free();
 }
 
 pair<char*, char*> MyString::alloc_n_copy(const char *first, const char *last) {
