@@ -2,6 +2,7 @@
 #define _STR_VEC_H_
 
 #include <string>
+#include <memory>
 
 class StrVec {
 
@@ -9,13 +10,19 @@ public:
 	StrVec();
 
 	//接受可变参数的构造函数
-	StrVec(initializer_list<string> strList);
+	StrVec(std::initializer_list<std::string> strList);
 
 	//拷贝构造函数
 	StrVec(const StrVec& strVec);
 
+	//移动构造函数
+	StrVec(StrVec&& strVec) noexcept;
+
 	//拷贝赋值运算符
 	StrVec& operator=(const StrVec& strVec);
+
+	//移动赋值运算符
+	StrVec& operator=(StrVec&& strVec) noexcept;
 
 	~StrVec();
 
@@ -23,25 +30,25 @@ public:
 	void push_back(const std::string &str);
 
 	//返回容器当前包含元素的大小
-	size_t size() const;
+	std::size_t size() const;
 
 	//返回容器当前的容量
-	size_t capacity() const;
+	std::size_t capacity() const;
 
 	//返回指向容器第一个元素位置的迭代器
 	std::string* begin() const;
 
 	//返回指向容器最后一个元素位置之后的迭代器
 	std::string* end() const;
-
+	
 	//分配至少能容纳n个元素的空间
-	void reserve(size_t n);
+	void reserve(std::size_t n);
 
 	//调整容器的大小为n个元素，若n<size(),则多出的元素被丢弃。若必须添加新元素，对新元素进行值初始化。
-	void resize(size_t n);
+	void resize(std::size_t n);
 
 	//调整容器的大小为n个元素。任何新添加的元素都初始化为值str
-	void resize(size_t n, const string &str);
+	void resize(std::size_t n, const std::string &str);
 
 private:
 
@@ -52,6 +59,7 @@ private:
 	//分配的内存末尾之后的位置
 	std::string *cap;
 
+	//静态变量声明后还需要在cpp源文件中定义才能运行
 	static std::allocator<std::string> alloc;
 
 	//分配内存，并拷贝一个给定范围中的元素
@@ -67,7 +75,7 @@ private:
 	void reallocate();
 
 	//当StrVec当前空间用完时，为其重新分配内存，新内存的容量大小为n，并将原容器中的元素移动到新内存中
-	void alloc_n_move(size_t newCapacity);
+	void alloc_n_move(std::size_t newCapacity);
 };
 
 #endif

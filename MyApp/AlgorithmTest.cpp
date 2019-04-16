@@ -17,7 +17,7 @@ void AlgorithmTest::lambdaTest() {
 	size_t v1 = 40;
 	//lambda表达式其实生成的是一个隐藏函数，我们用auto可以获取这个函数，不过获取的是其函数指针
 	//lambda表达式最好显示指定返回类型（使用尾置返回类型）
-	auto f1 = [v1]() mutable -> int {return ++v1; };
+	auto f1 = [v1]() mutable -> size_t {return ++v1; };
 	v1 = 0;
 	cout << "lambda表达式的运行结果：" << f1() << endl;
 }

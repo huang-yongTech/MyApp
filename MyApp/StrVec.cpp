@@ -25,6 +25,11 @@ StrVec::StrVec(const StrVec& strVec) {
 	firstFree = cap = newData.second;
 }
 
+StrVec::StrVec(StrVec&& strVec) noexcept 
+	:elements(strVec.elements), firstFree(strVec.firstFree), cap(strVec.cap) {
+	strVec.elements = strVec.firstFree = strVec.cap = nullptr;
+}
+
 StrVec& StrVec::operator=(const StrVec& strVec) {
 	auto data = alloc_n_copy(strVec.begin(), strVec.end());
 	free();
@@ -32,6 +37,20 @@ StrVec& StrVec::operator=(const StrVec& strVec) {
 	elements = data.first;
 	//初始化尾后迭代器和表示容量的迭代器
 	firstFree = cap = data.second;
+
+	return *this;
+}
+
+StrVec& StrVec::operator=(StrVec&& strVec) noexcept {
+	if (this != &strVec) {
+		free();
+
+		elements = strVec.elements;
+		firstFree = strVec.firstFree;
+		cap = strVec.cap;
+
+		strVec.elements = strVec.firstFree = strVec.cap = nullptr;
+	}
 
 	return *this;
 }
@@ -99,6 +118,8 @@ void StrVec::resize(size_t n, const string &str) {
 	}
 }
 
+allocator<string> StrVec::alloc;
+
 //分配内存，并拷贝一个给定范围中的元素
 pair<string*, string*> StrVec::alloc_n_copy(const string *first, const string *last) {
 	string* data = alloc.allocate(last - first);
@@ -144,7 +165,7 @@ void StrVec::alloc_n_move(size_t newCapacity) {
 
 	for (size_t i = 0; i < size(); ++i) {
 		//这里调用的是移动方法，避免在重新分配内存由于拷贝元素和销毁元素带来的性能消耗
-		alloc.construct(dest++, std::move(src++));
+		alloc.construct(dest++, std::move(*src++));
 	}
 
 	//移动完元素后就释放原来的内存空间
