@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MemoryResult.h"
 #include <string>
+#include <iostream>
 
 MemoryResult::MemoryResult(string word, shared_ptr<set<lineNo>> linesSetP, shared_ptr<vector<string>> fileVectorP) :
 	word(word), linesSetP(linesSetP), fileVectorP(fileVectorP) {

@@ -2,6 +2,7 @@
 #define _MAP_TEST_H_
 
 #include <map>
+#include <fstream>
 
 using namespace std;
 
