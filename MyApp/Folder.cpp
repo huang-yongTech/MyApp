@@ -20,13 +20,14 @@ Folder::~Folder() {
 }
 
 //Message中使用了addMessage(this)，因此这里的参数需要使用指针
-void Folder::addMessage(Message *message) {
+void Folder::addMessage(Message* message) {
+
 	cout << "执行folder类addMessage函数" << endl;
-	//这里报错：读取访问权限冲突
+
 	messageSet.insert(message);
 }
 
-void Folder::removeMessage(Message *message) {
+void Folder::removeMessage(Message* message) {
 	messageSet.erase(message);
 }
 

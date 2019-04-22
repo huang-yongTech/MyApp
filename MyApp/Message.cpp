@@ -4,13 +4,11 @@
 
 using namespace std;
 
-Message::Message(const string &content) : content(content) {
-	Folder folder;
-	save(folder);
+Message::Message(const string& content) : content(content) {
 }
 
 //拷贝构造函数，构造一个新的对象
-Message::Message(const Message &message) : content(message.content), folderSet(message.folderSet) {
+Message::Message(const Message& message) : content(message.content), folderSet(message.folderSet) {
 	cout << "调用拷贝构造函数" << endl;
 
 	addToFolders(message);
@@ -18,7 +16,7 @@ Message::Message(const Message &message) : content(message.content), folderSet(m
 
 //拷贝赋值运算符，在将右侧对象拷贝到左侧对象之前，需要将左侧的message从folderSet中删除，
 //拷贝完成后，再将其添加到folderSet中
-Message& Message::operator=(const Message &message) {
+Message& Message::operator=(const Message& message) {
 	cout << "调用拷贝赋值运算符" << endl;
 
 	removeFromFolders();
@@ -30,17 +28,17 @@ Message& Message::operator=(const Message &message) {
 }
 
 Message::~Message() {
-	removeFromFolders();
+	//removeFromFolders();
 }
 
 //将本message添加到指定folder中，并将folder添加到folder集合中
-void Message::save(Folder &folder) {
+void Message::save(Folder& folder) {
 	folderSet.insert(&folder);
 	folder.addMessage(this);
 }
 
 //从folder集合中删除本message
-void Message::remove(Folder &folder) {
+void Message::remove(Folder& folder) {
 	folderSet.erase(&folder);
 	folder.removeMessage(this);
 }
@@ -70,7 +68,7 @@ void Message::removeFromFolders() {
 }
 
 //自定义的swap函数
-void swap(Message &leftMsg, Message &rightMsg) {
+void swap(Message& leftMsg, Message& rightMsg) {
 	using std::swap;
 
 	//交换之前要先将各自message从之前的folderSet中删除

@@ -18,9 +18,9 @@ public:
 
 	~Folder();
 
-	void addMessage(Message *message);
+	void addMessage(Message* message);
 
-	void removeMessage(Message *message);
+	void removeMessage(Message* message);
 
 	void print();
 
