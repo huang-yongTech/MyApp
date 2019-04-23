@@ -21,6 +21,10 @@ public:
 
 	CopyControlPtrTest& operator=(const CopyControlPtrTest &copyControlPtr);
 
+	CopyControlPtrTest(CopyControlPtrTest&& copyControlPtr) noexcept;
+
+	CopyControlPtrTest& operator=(CopyControlPtrTest&& copyControlPtr) noexcept;
+
 	void print();
 
 	~CopyControlPtrTest();

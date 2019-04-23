@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "StrVec.h"
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ StrVec::StrVec(const StrVec& strVec) {
 	firstFree = cap = newData.second;
 }
 
-StrVec::StrVec(StrVec&& strVec) noexcept 
+StrVec::StrVec(StrVec&& strVec) noexcept
 	:elements(strVec.elements), firstFree(strVec.firstFree), cap(strVec.cap) {
 	strVec.elements = strVec.firstFree = strVec.cap = nullptr;
 }
@@ -60,9 +61,18 @@ StrVec::~StrVec() {
 }
 
 //添加一个元素
-void StrVec::push_back(const string &str) {
+void StrVec::push_back(const string& str) {
+	cout << "调用拷贝版本的push_back" << endl;
+
 	check_n_alloc();
 	alloc.construct(firstFree++, str);
+}
+
+void StrVec::push_back(std::string&& str) {
+	cout << "调用移动版本的push_back" << endl;
+
+	check_n_alloc();
+	alloc.construct(firstFree++, std::move(str));
 }
 
 //返回容器当前包含元素的大小
@@ -100,7 +110,7 @@ void StrVec::resize(size_t n) {
 }
 
 //调整容器的大小为n个元素。任何新添加的元素都初始化为值str
-void StrVec::resize(size_t n, const string &str) {
+void StrVec::resize(size_t n, const string& str) {
 	if (n > size()) {
 		if (n > capacity()) {
 			//扩容
@@ -110,7 +120,8 @@ void StrVec::resize(size_t n, const string &str) {
 				alloc.construct(firstFree++, str);
 			}
 		}
-	} else if (n < size()) {
+	}
+	else if (n < size()) {
 		while (firstFree != elements + n) {
 			//这里要使用前缀递减运算符
 			alloc.destroy(--firstFree);
@@ -121,7 +132,7 @@ void StrVec::resize(size_t n, const string &str) {
 allocator<string> StrVec::alloc;
 
 //分配内存，并拷贝一个给定范围中的元素
-pair<string*, string*> StrVec::alloc_n_copy(const string *first, const string *last) {
+pair<string*, string*> StrVec::alloc_n_copy(const string* first, const string* last) {
 	string* data = alloc.allocate(last - first);
 	return { data,uninitialized_copy(first,last,data) };
 }
@@ -134,7 +145,7 @@ void StrVec::free() {
 		}*/
 
 		//为什么要捕获this参数？
-		for_each(elements, firstFree, [this](string &str) {alloc.destroy(&str); });
+		for_each(elements, firstFree, [this](string & str) {alloc.destroy(&str); });
 
 		alloc.deallocate(elements, cap - elements);
 	}

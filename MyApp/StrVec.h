@@ -29,6 +29,8 @@ public:
 	//像容器中添加一个元素
 	void push_back(const std::string &str);
 
+	void push_back(std::string&& str);
+
 	//返回容器当前包含元素的大小
 	std::size_t size() const;
 

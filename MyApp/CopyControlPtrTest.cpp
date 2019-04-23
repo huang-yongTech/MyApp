@@ -36,6 +36,25 @@ CopyControlPtrTest& CopyControlPtrTest::operator=(const CopyControlPtrTest& copy
 	return *this;
 }
 
+CopyControlPtrTest::CopyControlPtrTest(CopyControlPtrTest&& copyControlPtr) noexcept :
+	ps(copyControlPtr.ps), i(copyControlPtr.i), use(copyControlPtr.use) {
+	copyControlPtr.ps = nullptr;
+	copyControlPtr.use = nullptr;
+}
+
+CopyControlPtrTest& CopyControlPtrTest::operator=(CopyControlPtrTest&& copyContronPtr) noexcept {
+	if (this != &copyContronPtr) {
+		delete ps;
+		delete use;
+
+		ps = copyContronPtr.ps;
+		i = copyContronPtr.i;
+		use = copyContronPtr.use;
+	}
+
+	return *this;
+}
+
 void CopyControlPtrTest::print() {
 	cout << "打印行为像指针的类：" << endl;
 	cout << "ps: " << *ps << endl;
@@ -63,4 +82,5 @@ void swap(CopyControlPtrTest& lControl, CopyControlPtrTest& rControl) {
 	using std::swap;
 	swap(lControl.ps, rControl.ps);
 	swap(lControl.i, rControl.i);
+	swap(lControl.use, rControl.use);
 }
