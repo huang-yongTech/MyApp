@@ -13,6 +13,10 @@ class CopyControlTest {
 
 	friend inline void swap(CopyControlTest &lControl, CopyControlTest &rControl);
 
+	friend bool operator==(const CopyControlTest& lhs, const CopyControlTest& rhs);
+
+	friend bool operator!=(const CopyControlTest& lhs, const CopyControlTest& rhs);
+
 public:
 	//默认构造函数
 	CopyControlTest();
@@ -50,5 +54,9 @@ inline void swap(CopyControlTest &lControl, CopyControlTest &rControl) {
 	swap(lControl.s, rControl.s);
 	swap(lControl.ptr, rControl.ptr);
 }
+
+bool operator==(const CopyControlTest& lhs, const CopyControlTest& rhs);
+
+bool operator!=(const CopyControlTest& lhs, const CopyControlTest& rhs);
 
 #endif

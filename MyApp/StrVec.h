@@ -6,6 +6,10 @@
 
 class StrVec {
 
+	friend bool operator==(const StrVec& lhs, const StrVec& rhs);
+
+	friend bool operator!=(const StrVec& lhs, const StrVec& rhs);
+
 public:
 	StrVec();
 
@@ -27,7 +31,7 @@ public:
 	~StrVec();
 
 	//像容器中添加一个元素
-	void push_back(const std::string &str);
+	void push_back(const std::string& str);
 
 	void push_back(std::string&& str);
 
@@ -42,7 +46,7 @@ public:
 
 	//返回指向容器最后一个元素位置之后的迭代器
 	std::string* end() const;
-	
+
 	//分配至少能容纳n个元素的空间
 	void reserve(std::size_t n);
 
@@ -50,22 +54,22 @@ public:
 	void resize(std::size_t n);
 
 	//调整容器的大小为n个元素。任何新添加的元素都初始化为值str
-	void resize(std::size_t n, const std::string &str);
+	void resize(std::size_t n, const std::string& str);
 
 private:
 
 	//内存中的首元素
-	std::string *elements;
+	std::string* elements;
 	//最后一个实际元素之后的位置
-	std::string *firstFree;
+	std::string* firstFree;
 	//分配的内存末尾之后的位置
-	std::string *cap;
+	std::string* cap;
 
 	//静态变量声明后还需要在cpp源文件中定义才能运行
 	static std::allocator<std::string> alloc;
 
 	//分配内存，并拷贝一个给定范围中的元素
-	std::pair<std::string*, std::string*> alloc_n_copy(const std::string *first, const std::string *last);
+	std::pair<std::string*, std::string*> alloc_n_copy(const std::string* first, const std::string* last);
 
 	//销毁构造的元素并释放内存
 	void free();
@@ -79,5 +83,9 @@ private:
 	//当StrVec当前空间用完时，为其重新分配内存，新内存的容量大小为n，并将原容器中的元素移动到新内存中
 	void alloc_n_move(std::size_t newCapacity);
 };
+
+bool operator==(const StrVec& lhs, const StrVec& rhs);
+
+bool operator!=(const StrVec& lhs, const StrVec& rhs);
 
 #endif

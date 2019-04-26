@@ -7,11 +7,11 @@ CopyControlTest::CopyControlTest() {
 
 //由于在析构函数中进行了删除内置指针的操作，这里的内置指针赋值最好以ptr(new string(*ptr))来赋值
 //避免在调用普通构造函数后由于相关函数以及当前程序退出作用域导致的内置指针被删除两次而出现的未知错误
-CopyControlTest::CopyControlTest(string s, string *ptr) :s(s), ptr(new string(*ptr)) {
+CopyControlTest::CopyControlTest(string s, string* ptr) :s(s), ptr(new string(*ptr)) {
 	cout << "调用带参数的构造函数" << endl;
 }
 
-CopyControlTest::CopyControlTest(const CopyControlTest &copyControl) {
+CopyControlTest::CopyControlTest(const CopyControlTest& copyControl) {
 	cout << "调用拷贝构造函数" << endl;
 
 	//浅拷贝
@@ -21,12 +21,13 @@ CopyControlTest::CopyControlTest(const CopyControlTest &copyControl) {
 	//深拷贝
 	s = copyControl.s;
 
-	auto newPtr = new string(*copyControl.ptr);
+	//涉及到指针操作赋值，最好在赋值之前检查指针是否为空
+	auto newPtr = (copyControl.ptr == nullptr) ? nullptr : new string(*copyControl.ptr);
 	delete ptr;
 	ptr = newPtr;
 }
 
-CopyControlTest& CopyControlTest::operator=(const CopyControlTest &copyControl) {
+CopyControlTest & CopyControlTest::operator=(const CopyControlTest & copyControl) {
 	cout << "调用拷贝赋值运算符" << endl;
 
 	//浅拷贝
@@ -36,7 +37,7 @@ CopyControlTest& CopyControlTest::operator=(const CopyControlTest &copyControl) 
 	//深拷贝
 	s = copyControl.s;
 
-	auto newPtr = new string(*copyControl.ptr);
+	auto newPtr = (copyControl.ptr == nullptr) ? nullptr : new string(*copyControl.ptr);
 	delete ptr;
 	ptr = newPtr;
 
@@ -60,4 +61,24 @@ CopyControlTest copyControl(CopyControlTest copyControl) {
 	CopyControlTest controlTest(copyControl);
 
 	return controlTest;
+}
+
+bool operator==(const CopyControlTest & lhs, const CopyControlTest & rhs) {
+	if (lhs.ptr == nullptr && rhs.ptr != nullptr) {
+		return false;
+	}
+
+	if (lhs.ptr != nullptr && rhs.ptr == nullptr) {
+		return false;
+	}
+
+	if (lhs.ptr == nullptr && rhs.ptr == nullptr) {
+		return lhs.s == rhs.s;
+	}
+
+	return (*lhs.ptr == *rhs.ptr) && (lhs.s == rhs.s);
+}
+
+bool operator!=(const CopyControlTest & lhs, const CopyControlTest & rhs) {
+	return !(lhs == rhs);
 }

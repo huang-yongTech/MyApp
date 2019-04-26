@@ -63,9 +63,11 @@ void CopyControlPtrTest::print() {
 }
 
 CopyControlPtrTest::~CopyControlPtrTest() {
-	if (-- * use == 0) {
-		delete ps;
+	if (use != nullptr && -- * use == 0) {
 		delete use;
+		//这里ps必须要与引用计数use绑定在一起删除，
+		//只有当use为0，即没有引用时候才能删除，不能单独删除，否则会出现多次delete ps导致出现未知错误
+		delete ps;
 	}
 }
 
@@ -83,4 +85,12 @@ void swap(CopyControlPtrTest& lControl, CopyControlPtrTest& rControl) {
 	swap(lControl.ps, rControl.ps);
 	swap(lControl.i, rControl.i);
 	swap(lControl.use, rControl.use);
+}
+
+bool operator==(const CopyControlPtrTest& lhs, const CopyControlPtrTest& rhs) {
+	return (lhs.ps == rhs.ps) && (lhs.i == rhs.i) && (lhs.use == rhs.use);
+}
+
+bool operator!=(const CopyControlPtrTest & lhs, const CopyControlPtrTest & rhs) {
+	return !(lhs == rhs);
 }

@@ -120,8 +120,7 @@ void StrVec::resize(size_t n, const string& str) {
 				alloc.construct(firstFree++, str);
 			}
 		}
-	}
-	else if (n < size()) {
+	} else if (n < size()) {
 		while (firstFree != elements + n) {
 			//这里要使用前缀递减运算符
 			alloc.destroy(--firstFree);
@@ -185,4 +184,12 @@ void StrVec::alloc_n_move(size_t newCapacity) {
 	elements = newStr;
 	firstFree = dest;
 	cap = elements + newCapacity;
+}
+
+bool operator==(const StrVec & lhs, const StrVec & rhs) {
+	return (lhs.size() == rhs.size()) && equal(lhs.begin(), lhs.end(), rhs.begin());
+}
+
+bool operator!=(const StrVec & lhs, const StrVec & rhs) {
+	return !(lhs == rhs);
 }

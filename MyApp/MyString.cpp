@@ -71,6 +71,18 @@ MyString::~MyString() {
 	free();
 }
 
+char* MyString::first() const {
+	return elements;
+}
+
+char* MyString::last() const {
+	return firstFree;
+}
+
+size_t MyString::size() const {
+	return last() - first();
+}
+
 allocator<char> MyString::alloc;
 
 pair<char*, char*> MyString::alloc_n_copy(const char* first, const char* last) {
@@ -85,4 +97,44 @@ void MyString::free() {
 		for_each(elements, firstFree, [this](char& c)->void {alloc.destroy(&c); });
 		alloc.deallocate(elements, firstFree - elements);
 	}
+}
+
+ostream& operator<<(ostream & os, const MyString & myStream) {
+	char* ss = myStream.first();
+	while (*ss) {
+		os << *ss++;
+	}
+	os << endl;
+
+	return os;
+}
+
+bool operator==(const MyString & lhs, const MyString & rhs) {
+	if (lhs.size() != rhs.size()) {
+		return false;
+	}
+
+	/*char* s1 = lhs.first();
+	char* s2 = rhs.first();
+
+	while (s1 != lhs.last() && s2 != rhs.last()) {
+		if (*s1++ != *s2++) {
+			return false;
+		}
+	}*/
+
+	return equal(lhs.first(), lhs.last(), rhs.first());
+
+	//为什么for循环不能声明多个变量？
+	/*for (char* s1 = lhs.first(), char* s2 = rhs.first(); s1 != lhs.last(), s2 != rhs.last(); s1++, s2++) {
+		if (*s1 != *s2) {
+			return false;
+		}
+	}*/
+
+	//return true;
+}
+
+bool operator!=(const MyString & lhs, const MyString & rhs) {
+	return !(lhs == rhs);
 }

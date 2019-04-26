@@ -12,6 +12,10 @@ class CopyControlPtrTest {
 
 	friend void swap(CopyControlPtrTest &lControl, CopyControlPtrTest &rControl);
 
+	friend bool operator==(const CopyControlPtrTest& lhs, const CopyControlPtrTest& rhs);
+
+	friend bool operator!=(const CopyControlPtrTest& lhs, const CopyControlPtrTest& rhs);
+
 public:
 	CopyControlPtrTest() = default;
 
@@ -38,6 +42,10 @@ private:
 bool operator<(const CopyControlPtrTest &leftControl, const CopyControlPtrTest &rightControl);
 
 void swap(CopyControlPtrTest &lControl, CopyControlPtrTest &rControl);
+
+bool operator==(const CopyControlPtrTest& lhs, const CopyControlPtrTest& rhs);
+
+bool operator!=(const CopyControlPtrTest& lhs, const CopyControlPtrTest& rhs);
 
 #endif
 
