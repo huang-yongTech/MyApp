@@ -6,9 +6,19 @@
 
 class StrVec {
 
+	friend std::ostream& operator<<(std::ostream& os, const StrVec& strVec);
+
 	friend bool operator==(const StrVec& lhs, const StrVec& rhs);
 
 	friend bool operator!=(const StrVec& lhs, const StrVec& rhs);
+
+	friend bool operator<(const StrVec& lhs, const StrVec& rhs);
+
+	friend bool operator>(const StrVec& lhs, const StrVec& rhs);
+
+	friend bool operator<=(const StrVec& lhs, const StrVec& rhs);
+
+	friend bool operator>=(const StrVec& lhs, const StrVec& rhs);
 
 public:
 	StrVec();
@@ -25,8 +35,14 @@ public:
 	//拷贝赋值运算符
 	StrVec& operator=(const StrVec& strVec);
 
+	StrVec& operator=(std::initializer_list<std::string> strList);
+
 	//移动赋值运算符
 	StrVec& operator=(StrVec&& strVec) noexcept;
+
+	std::string& operator[](std::size_t n);
+
+	const std::string& operator[](std::size_t n) const;
 
 	~StrVec();
 
@@ -84,8 +100,18 @@ private:
 	void alloc_n_move(std::size_t newCapacity);
 };
 
+std::ostream& operator<<(std::ostream& os, const StrVec& strVec);
+
 bool operator==(const StrVec& lhs, const StrVec& rhs);
 
 bool operator!=(const StrVec& lhs, const StrVec& rhs);
+
+bool operator<(const StrVec& lhs, const StrVec& rhs);
+
+bool operator>(const StrVec& lhs, const StrVec& rhs);
+
+bool operator<=(const StrVec& lhs, const StrVec& rhs);
+
+bool operator>=(const StrVec& lhs, const StrVec& rhs);
 
 #endif

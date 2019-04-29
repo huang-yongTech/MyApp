@@ -32,12 +32,21 @@ StrVec::StrVec(StrVec&& strVec) noexcept
 }
 
 StrVec& StrVec::operator=(const StrVec& strVec) {
-	auto data = alloc_n_copy(strVec.begin(), strVec.end());
+	pair<string*, string*> data = alloc_n_copy(strVec.begin(), strVec.end());
 	free();
 	//初始化首迭代器
 	elements = data.first;
 	//初始化尾后迭代器和表示容量的迭代器
 	firstFree = cap = data.second;
+
+	return *this;
+}
+
+StrVec& StrVec::operator=(initializer_list<string> strList) {
+	pair<string*, string*> newData = alloc_n_copy(strList.begin(), strList.end());
+	free();
+	elements = newData.first;
+	firstFree = cap = newData.second;
 
 	return *this;
 }
@@ -54,6 +63,14 @@ StrVec& StrVec::operator=(StrVec&& strVec) noexcept {
 	}
 
 	return *this;
+}
+
+string& StrVec::operator[](size_t n) {
+	return elements[n];
+}
+
+const string& StrVec::operator[](size_t n) const {
+	return elements[n];
 }
 
 StrVec::~StrVec() {
@@ -186,10 +203,34 @@ void StrVec::alloc_n_move(size_t newCapacity) {
 	cap = elements + newCapacity;
 }
 
+ostream& operator<<(std::ostream & os, const StrVec & strVec) {
+	for (string* first = strVec.begin(); first != strVec.end(); first++) {
+		os << *first << endl;
+	}
+
+	return os;
+}
+
 bool operator==(const StrVec & lhs, const StrVec & rhs) {
 	return (lhs.size() == rhs.size()) && equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
 bool operator!=(const StrVec & lhs, const StrVec & rhs) {
 	return !(lhs == rhs);
+}
+
+bool operator<(const StrVec & lhs, const StrVec & rhs) {
+	return lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+}
+
+bool operator>(const StrVec & lhs, const StrVec & rhs) {
+	return (lhs != rhs) && !(lhs < rhs);
+}
+
+bool operator<=(const StrVec & lhs, const StrVec & rhs) {
+	return !(lhs > rhs);
+}
+
+bool operator>=(const StrVec & lhs, const StrVec & rhs) {
+	return !(lhs < rhs);
 }

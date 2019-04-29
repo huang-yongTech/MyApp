@@ -71,12 +71,6 @@ CopyControlPtrTest::~CopyControlPtrTest() {
 	}
 }
 
-bool operator<(const CopyControlPtrTest& leftControl, const CopyControlPtrTest& rightControl) {
-	cout << "调用小于比较运算符" << endl;
-
-	return *leftControl.ps < *rightControl.ps;
-}
-
 //自定义的交换函数
 void swap(CopyControlPtrTest& lControl, CopyControlPtrTest& rControl) {
 	cout << "调用CopyControlPtrTest自定义的swap函数" << endl;
@@ -93,4 +87,10 @@ bool operator==(const CopyControlPtrTest& lhs, const CopyControlPtrTest& rhs) {
 
 bool operator!=(const CopyControlPtrTest & lhs, const CopyControlPtrTest & rhs) {
 	return !(lhs == rhs);
+}
+
+bool operator<(const CopyControlPtrTest& leftControl, const CopyControlPtrTest& rightControl) {
+	cout << "调用小于比较运算符" << endl;
+
+	return *leftControl.ps < *rightControl.ps;
 }

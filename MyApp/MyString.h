@@ -11,6 +11,14 @@ class MyString {
 
 	friend bool operator!=(const MyString& lhs, const MyString& rhs);
 
+	friend bool operator<(const MyString& lhs, const MyString& rhs);
+
+	friend bool operator>(const MyString& lhs, const MyString& rhs);
+
+	friend bool operator<=(const MyString& lhs, const MyString& rhs);
+
+	friend bool operator>=(const MyString& lhs, const MyString& rhs);
+
 public:
 
 	MyString();
@@ -25,6 +33,10 @@ public:
 	MyString& operator=(const MyString& myString);
 
 	MyString& operator=(MyString&& myString) noexcept;
+
+	char& operator[](std::size_t n);
+
+	const char& operator[](std::size_t n) const;
 
 	~MyString();
 
@@ -54,5 +66,13 @@ std::ostream& operator<<(std::ostream& os, const MyString& myStream);
 bool operator==(const MyString& lhs, const MyString& rhs);
 
 bool operator!=(const MyString& lhs, const MyString& rhs);
+
+bool operator<(const MyString& lhs, const MyString& rhs);
+
+bool operator>(const MyString& lhs, const MyString& rhs);
+
+bool operator<=(const MyString& lhs, const MyString& rhs);
+
+bool operator>=(const MyString& lhs, const MyString& rhs);
 
 #endif

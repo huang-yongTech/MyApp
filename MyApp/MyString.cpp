@@ -67,6 +67,14 @@ MyString& MyString::operator=(MyString&& myString) noexcept {
 	return *this;
 }
 
+char& MyString::operator[](size_t n) {
+	return elements[n];
+}
+
+const char& MyString::operator[](size_t n) const {
+	return elements[n];
+}
+
 MyString::~MyString() {
 	free();
 }
@@ -137,4 +145,20 @@ bool operator==(const MyString & lhs, const MyString & rhs) {
 
 bool operator!=(const MyString & lhs, const MyString & rhs) {
 	return !(lhs == rhs);
+}
+
+bool operator<(const MyString & lhs, const MyString & rhs) {
+	return lexicographical_compare(lhs.first(), lhs.last(), rhs.first(), rhs.last());
+}
+
+bool operator>(const MyString & lhs, const MyString & rhs) {
+	return (lhs != rhs) && !(lhs < rhs);
+}
+
+bool operator<=(const MyString & lhs, const MyString & rhs) {
+	return !(lhs > rhs);
+}
+
+bool operator>=(const MyString & lhs, const MyString & rhs) {
+	return !(lhs < rhs);
 }

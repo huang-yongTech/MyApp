@@ -82,3 +82,32 @@ bool operator==(const CopyControlTest & lhs, const CopyControlTest & rhs) {
 bool operator!=(const CopyControlTest & lhs, const CopyControlTest & rhs) {
 	return !(lhs == rhs);
 }
+
+bool operator<(const CopyControlTest & lhs, const CopyControlTest & rhs) {
+	//空指针与非空指针大小如何判断？
+	if (lhs.ptr == nullptr && rhs.ptr != nullptr) {
+		return true;
+	}
+
+	if (lhs.ptr != nullptr && rhs.ptr == nullptr) {
+		return false;
+	}
+
+	if (lhs.ptr == nullptr && rhs.ptr == nullptr) {
+		return lhs.s < rhs.s;
+	}
+
+	return (*lhs.ptr < *rhs.ptr) && (lhs.s < rhs.s);
+}
+
+bool operator>(const CopyControlTest & lhs, const CopyControlTest & rhs) {
+	return (lhs != rhs) && !(lhs < rhs);
+}
+
+bool operator<=(const CopyControlTest & lhs, const CopyControlTest & rhs) {
+	return !(lhs > rhs);
+}
+
+bool operator>=(const CopyControlTest & lhs, const CopyControlTest & rhs) {
+	return !(lhs < rhs);
+}
