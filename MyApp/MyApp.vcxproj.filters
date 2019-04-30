@@ -51,6 +51,12 @@
     <ClInclude Include="Foo.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Quote.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BulkQuote.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -90,6 +96,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Foo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Quote.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BulkQuote.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
