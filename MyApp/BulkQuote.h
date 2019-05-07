@@ -1,9 +1,9 @@
 #ifndef _BULK_QUOTE_H_
 #define _BULK_QUOTE_H_
 
-#include "Quote.h"
+#include "DiskQuote.h"
 
-class BulkQuote : public Quote {
+class BulkQuote : public DiskQuote {
 
 public:
 

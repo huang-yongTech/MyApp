@@ -8,7 +8,7 @@ BulkQuote::BulkQuote() {
 }
 
 BulkQuote::BulkQuote(const string& bookNo, double salesPrice, size_t minQty, double discount)
-	:Quote(bookNo, salesPrice), minQty(minQty), discount(discount) {
+	:DiskQuote(bookNo, salesPrice, minQty, discount) {
 }
 
 BulkQuote::~BulkQuote() {

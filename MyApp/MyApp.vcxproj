@@ -155,6 +155,7 @@
     <ClInclude Include="BulkQuote.h" />
     <ClInclude Include="CopyControlPtrTest.h" />
     <ClInclude Include="CopyControlTest.h" />
+    <ClInclude Include="DiskQuote.h" />
     <ClInclude Include="Folder.h" />
     <ClInclude Include="Foo.h" />
     <ClInclude Include="MapTest.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="BulkQuote.cpp" />
     <ClCompile Include="CopyControlPtrTest.cpp" />
     <ClCompile Include="CopyControlTest.cpp" />
+    <ClCompile Include="DiskQuote.cpp" />
     <ClCompile Include="Folder.cpp" />
     <ClCompile Include="Foo.cpp" />
     <ClCompile Include="MapTest.cpp" />

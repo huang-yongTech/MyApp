@@ -57,6 +57,9 @@
     <ClInclude Include="BulkQuote.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DiskQuote.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -102,6 +105,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="BulkQuote.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DiskQuote.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
