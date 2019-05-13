@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AlgorithmTest.h" />
+    <ClInclude Include="Basket.h" />
     <ClInclude Include="BulkQuote.h" />
     <ClInclude Include="CopyControlPtrTest.h" />
     <ClInclude Include="CopyControlTest.h" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlgorithmTest.cpp" />
+    <ClCompile Include="Basket.cpp" />
     <ClCompile Include="BulkQuote.cpp" />
     <ClCompile Include="CopyControlPtrTest.cpp" />
     <ClCompile Include="CopyControlTest.cpp" />

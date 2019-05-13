@@ -29,6 +29,15 @@ public:
 
 	virtual void debug();
 
+	//使用左值和右值限定符时，使用左值限定符的成员函数必须同时使用const限定符修饰，否则在调用的时候会出现二义性错误。
+	virtual Quote* clone() const & {
+		return new Quote(*this);
+	}
+
+	virtual Quote* clone() && {
+		return new Quote(std::move(*this));
+	}
+
 private:
 
 	std::string bookNo;
@@ -39,5 +48,7 @@ protected:
 };
 
 bool operator!=(const Quote& lhs, const Quote& rhs);
+
+double printTotal(std::ostream& os, const Quote& quote, std::size_t n);
 
 #endif

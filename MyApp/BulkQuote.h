@@ -25,13 +25,21 @@ public:
 
 	void debug() override;
 
-//备注：这里的quantity和discount继承自基类DiskQuote（声明为protected），
-//因此这里不能再次声明，否则就会将基类中的同名成员给覆盖掉，导致出现错误。
-//private:
-//
-//	std::size_t quantity = 0;
-//
-//	double discount = 0.0;
+	virtual BulkQuote* clone() const & override {
+		return new BulkQuote(*this);
+	}
+
+	virtual BulkQuote* clone() && override {
+		return new BulkQuote(std::move(*this));
+	}
+
+	//备注：这里的quantity和discount继承自基类DiskQuote（声明为protected），
+	//因此这里不能再次声明，否则就会将基类中的同名成员给覆盖掉，导致出现错误。
+	//private:
+	//
+	//	std::size_t quantity = 0;
+	//
+	//	double discount = 0.0;
 };
 
 #endif

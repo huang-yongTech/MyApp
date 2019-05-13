@@ -59,3 +59,8 @@ void Quote::debug() {
 bool operator!=(const Quote& lhs, const Quote& rhs) {
 	return lhs.bookNo != rhs.bookNo && lhs.price != rhs.price;
 }
+
+double printTotal(std::ostream& os, const Quote& quote, std::size_t n) {
+	double total = quote.net_price(n);
+	return total;
+}
