@@ -15,6 +15,8 @@ void Basket::addItem(const std::shared_ptr<Quote>& quoteSale) {
 }
 
 void Basket::addItem(const Quote& quoteSale) {
+	//make_shared参数传递传递的不是动态类型？
+	//引用的动态类型只有在变量调用函数的时候才会生效，这里需要注意
 	quoteItems.insert(shared_ptr<Quote>(quoteSale.clone()));
 }
 

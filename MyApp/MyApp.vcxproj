@@ -152,7 +152,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AlgorithmTest.h" />
+    <ClInclude Include="AndQuery.h" />
     <ClInclude Include="Basket.h" />
+    <ClInclude Include="BinaryQuery.h" />
     <ClInclude Include="BulkQuote.h" />
     <ClInclude Include="CopyControlPtrTest.h" />
     <ClInclude Include="CopyControlTest.h" />
@@ -160,17 +162,24 @@
     <ClInclude Include="Folder.h" />
     <ClInclude Include="Foo.h" />
     <ClInclude Include="MapTest.h" />
-    <ClInclude Include="MemoryResult.h" />
-    <ClInclude Include="MemoryTest.h" />
+    <ClInclude Include="NotQuery.h" />
+    <ClInclude Include="OrQuery.h" />
+    <ClInclude Include="Query.h" />
+    <ClInclude Include="QueryBase.h" />
+    <ClInclude Include="QueryResult.h" />
+    <ClInclude Include="TextQuery.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Quote.h" />
     <ClInclude Include="StrVec.h" />
+    <ClInclude Include="WordQuery.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlgorithmTest.cpp" />
+    <ClCompile Include="AndQuery.cpp" />
     <ClCompile Include="Basket.cpp" />
+    <ClCompile Include="BinaryQuery.cpp" />
     <ClCompile Include="BulkQuote.cpp" />
     <ClCompile Include="CopyControlPtrTest.cpp" />
     <ClCompile Include="CopyControlTest.cpp" />
@@ -178,8 +187,12 @@
     <ClCompile Include="Folder.cpp" />
     <ClCompile Include="Foo.cpp" />
     <ClCompile Include="MapTest.cpp" />
-    <ClCompile Include="MemoryResult.cpp" />
-    <ClCompile Include="MemoryTest.cpp" />
+    <ClCompile Include="NotQuery.cpp" />
+    <ClCompile Include="OrQuery.cpp" />
+    <ClCompile Include="Query.cpp" />
+    <ClCompile Include="QueryBase.cpp" />
+    <ClCompile Include="QueryResult.cpp" />
+    <ClCompile Include="TextQuery.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="MyApp.cpp" />
     <ClCompile Include="MyString.cpp" />
@@ -191,6 +204,7 @@
     </ClCompile>
     <ClCompile Include="Quote.cpp" />
     <ClCompile Include="StrVec.cpp" />
+    <ClCompile Include="WordQuery.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

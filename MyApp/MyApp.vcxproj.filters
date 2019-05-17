@@ -24,12 +24,6 @@
     <ClInclude Include="MapTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryTest.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MemoryResult.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="CopyControlTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -63,6 +57,33 @@
     <ClInclude Include="Basket.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="QueryResult.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QueryBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Query.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TextQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WordQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NotQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AndQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OrQuery.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -75,12 +96,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MapTest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MemoryTest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MemoryResult.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CopyControlTest.cpp">
@@ -114,6 +129,33 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Basket.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryResult.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Query.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TextQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WordQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NotQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AndQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OrQuery.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

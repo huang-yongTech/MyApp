@@ -1,16 +1,16 @@
 #include "pch.h"
-#include "MemoryResult.h"
+#include "QueryResult.h"
 #include <string>
 #include <iostream>
 
-MemoryResult::MemoryResult(string word, shared_ptr<set<lineNo>> linesSetP, shared_ptr<vector<string>> fileVectorP) :
+QueryResult::QueryResult(string word, shared_ptr<set<lineNo>> linesSetP, shared_ptr<vector<string>> fileVectorP) :
 	word(word), linesSetP(linesSetP), fileVectorP(fileVectorP) {
 }
 
-MemoryResult::~MemoryResult() {}
+QueryResult::~QueryResult() {}
 
 //打印查找结果
-ostream & print(ostream &os, const MemoryResult &result) {
+ostream& print(ostream& os, const QueryResult& result) {
 	os << result.word << " 出现了 " << result.linesSetP->size() << endl;
 
 	for (auto num : *result.linesSetP) {
