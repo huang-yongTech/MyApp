@@ -1,12 +1,14 @@
 #include "pch.h"
 #include "WordQuery.h"
+#include <iostream>
 
 using namespace std;
 
 WordQuery::WordQuery() {
 }
 
-WordQuery::WordQuery(const string& queryWord) :queryWord(queryWord) {
+WordQuery::WordQuery(const string& queryWord) : queryWord(queryWord) {
+	cout << "WordQuery(const string& queryWord)" << endl;
 }
 
 WordQuery::~WordQuery() {

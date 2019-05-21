@@ -89,9 +89,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MyApp.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="AlgorithmTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -156,6 +153,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="OrQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

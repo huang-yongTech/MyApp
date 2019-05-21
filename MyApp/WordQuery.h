@@ -14,7 +14,7 @@ public:
 
 	WordQuery();
 
-	WordQuery(const string& queryWord);
+	WordQuery(const std::string& queryWord);
 
 	~WordQuery();
 
@@ -22,12 +22,9 @@ private:
 
 	QueryResult eval(const TextQuery& textQuery) const override;
 
-	string rep() const override;
+	std::string rep() const override;
 
-	string queryWord;
+	std::string queryWord;
 };
-
-inline Query::Query(const std::string& str) : queryBase(new WordQuery(str)) {
-}
 
 #endif

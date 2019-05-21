@@ -7,10 +7,12 @@
 
 //构造函数，读取输入文件，并建立单词到行号的map映射
 //这里为filesVectorP分配了一个新的内存
-TextQuery::TextQuery(ifstream &fileStream) :filesVectorP(new vector<string>) {
-	//用于保存一行数据
+TextQuery::TextQuery(ifstream& fileStream) :filesVectorP(new vector<string>) {
+	using resultType = map<string, shared_ptr<set<lineNo>>>::mapped_type;
+	
 	string lineText;
 	while (getline(fileStream, lineText)) {
+		//将文本一行一行的保存到集合中
 		filesVectorP->push_back(lineText);
 		//当前行号
 		lineNo n = filesVectorP->size() - 1;
@@ -19,7 +21,7 @@ TextQuery::TextQuery(ifstream &fileStream) :filesVectorP(new vector<string>) {
 		string word;
 		while (linestream >> word) {
 			//如果单词不在linesMap中，使用下标添加，该下标返回的是一个指向map中value的对象
-			auto &lines = linesMap[word];
+			resultType& lines = linesMap[word];
 			if (!lines) {
 				lines.reset(new set<lineNo>);
 			}
@@ -36,7 +38,7 @@ void TextQuery::runQuries() const {
 }
 
 //开始查询
-void TextQuery::runQuries(ifstream &fileStream) const {
+void TextQuery::runQuries(ifstream& fileStream) const {
 	TextQuery memoryTest(fileStream);
 
 	while (true) {
@@ -47,14 +49,16 @@ void TextQuery::runQuries(ifstream &fileStream) const {
 		}
 
 		//开始查询
-		print(cout, memoryTest.query(word));
+		cout << memoryTest.query(word) << endl;
 	}
 }
 
-QueryResult TextQuery::query(const string &word) const {
+//在运行这个方法之前，首先要建立文件单词与行号的map映射
+QueryResult TextQuery::query(const string& word) const {
 	//如果没有找到，返回一个空的对象
 	shared_ptr<set<lineNo>> noData(new set<lineNo>);
-	auto location = linesMap.find(word);
+
+	map<string, shared_ptr<set<lineNo>>>::const_iterator location = linesMap.find(word);
 	if (location == linesMap.end()) {
 		return QueryResult(word, noData, filesVectorP);
 	}

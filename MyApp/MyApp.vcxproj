@@ -194,7 +194,7 @@
     <ClCompile Include="QueryResult.cpp" />
     <ClCompile Include="TextQuery.cpp" />
     <ClCompile Include="Message.cpp" />
-    <ClCompile Include="MyApp.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

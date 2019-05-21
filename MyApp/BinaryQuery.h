@@ -10,15 +10,15 @@ protected:
 
 	BinaryQuery();
 
-	BinaryQuery(const Query& lQuery, const Query& rQuery, string operatorName);
+	BinaryQuery(const Query& lQuery, const Query& rQuery, std::string operatorName);
 
 	~BinaryQuery();
 
-	string rep() const override;
+	std::string rep() const override;
 
 	Query lQuery, rQuery;
 
-	string operatorName;
+	std::string operatorName;
 };
 
 #endif

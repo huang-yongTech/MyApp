@@ -7,12 +7,12 @@ Library by providing feature parity and new libraries. In addition AndroidX incl
 the following features:
 
 All packages in AndroidX live in a consistent namespace starting with the string 
-androidx. The Support Library packages have been mapped into corresponding 
-androidx.* packages. For a full mapping of all the old classes and build artifacts 
+AndroidX. The Support Library packages have been mapped into corresponding 
+AndroidX.* packages. For a full mapping of all the old classes and build artifacts 
 to the new ones, see the Package Refactoring page.
 
 Unlike the Support Library, AndroidX packages are separately maintained and updated. 
-The androidx packages use strict Semantic Versioning starting with version 1.0.0. 
+The AndroidX packages use strict Semantic Versioning starting with version 1.0.0. 
 You can update AndroidX libraries in your project independently.
 
 All new Support Library development will occur in the AndroidX library. This 

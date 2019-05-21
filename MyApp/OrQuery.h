@@ -5,7 +5,7 @@
 
 class OrQuery : public BinaryQuery {
 
-	friend Query operator|(const Query& lq, const Query& rq);
+	friend inline Query operator|(const Query& lq, const Query& rq);
 
 public:
 
@@ -21,7 +21,7 @@ private:
 };
 
 inline Query operator|(const Query& lq, const Query& rq) {
-	return shared_ptr<QueryBase>(new OrQuery(lq, rq));
+	return std::shared_ptr<QueryBase>(new OrQuery(lq, rq));
 }
 
 #endif

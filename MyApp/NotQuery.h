@@ -8,7 +8,7 @@
 
 class NotQuery : public QueryBase {
 
-	friend Query operator~(const Query& q);
+	friend inline Query operator~(const Query& q);
 
 public:
 
@@ -22,14 +22,14 @@ private:
 
 	QueryResult eval(const TextQuery& textQuery) const override;
 
-	string rep() const override;
+	std::string rep() const override;
 
 	Query query;
 };
 
 inline Query operator~(const Query& q) {
 	//这里是隐士调用了Query类的接受shared_ptr参数的构造函数
-	return shared_ptr<QueryBase>(new NotQuery(q));
+	return std::shared_ptr<QueryBase>(new NotQuery(q));
 }
 
 #endif

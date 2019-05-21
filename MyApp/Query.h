@@ -9,13 +9,13 @@
 
 class Query {
 
-	friend Query operator~(const Query& q);
+	friend inline Query operator~(const Query& q);
 
-	friend Query operator|(const Query& lq, const Query& rq);
+	friend inline Query operator|(const Query& lq, const Query& rq);
 
-	friend Query operator&(const Query& lq, const Query& rq);
+	friend inline Query operator&(const Query& lq, const Query& rq);
 
-	friend std::ostream& operator<<(std::ostream& os, const Query& query);
+	friend inline std::ostream& operator<<(std::ostream& os, const Query& query);
 
 public:
 
@@ -37,10 +37,11 @@ private:
 
 	Query(std::shared_ptr<QueryBase> queryBase);
 
+	//成员变量（保存基类及其派生类的指针）
 	std::shared_ptr<QueryBase> queryBase;
 };
 
-std::ostream& operator<<(std::ostream& os, const Query& query) {
+inline std::ostream& operator<<(std::ostream& os, const Query& query) {
 	os << query.rep() << endl;
 	return os;
 }
