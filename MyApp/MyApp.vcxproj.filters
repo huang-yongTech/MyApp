@@ -84,6 +84,9 @@
     <ClInclude Include="OrQuery.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="QueryHistory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -156,6 +159,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QueryHistory.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

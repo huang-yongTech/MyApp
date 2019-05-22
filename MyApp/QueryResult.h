@@ -12,6 +12,8 @@ class QueryResult {
 
 	friend ostream& operator<<(ostream& os, const QueryResult& result);
 
+	friend ostream& print(ostream& os, const QueryResult& result, const std::size_t& start, const std::size_t& end);
+
 public:
 
 	using lineNo = vector<string>::size_type;
@@ -36,6 +38,8 @@ private:
 };
 
 ostream& operator<<(ostream& os, const QueryResult& result);
+
+ostream& print(ostream& os, const QueryResult& result, const std::size_t& start, const std::size_t& end);
 
 #endif // _MEMORY_RESULT_H_
 

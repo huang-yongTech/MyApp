@@ -166,6 +166,7 @@
     <ClInclude Include="OrQuery.h" />
     <ClInclude Include="Query.h" />
     <ClInclude Include="QueryBase.h" />
+    <ClInclude Include="QueryHistory.h" />
     <ClInclude Include="QueryResult.h" />
     <ClInclude Include="TextQuery.h" />
     <ClInclude Include="Message.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="OrQuery.cpp" />
     <ClCompile Include="Query.cpp" />
     <ClCompile Include="QueryBase.cpp" />
+    <ClCompile Include="QueryHistory.cpp" />
     <ClCompile Include="QueryResult.cpp" />
     <ClCompile Include="TextQuery.cpp" />
     <ClCompile Include="Message.cpp" />
