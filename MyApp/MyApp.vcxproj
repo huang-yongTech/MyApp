@@ -155,9 +155,12 @@
     <ClInclude Include="AndQuery.h" />
     <ClInclude Include="Basket.h" />
     <ClInclude Include="BinaryQuery.h" />
+    <ClInclude Include="Blob.h" />
+    <ClInclude Include="BlobPtr.h" />
     <ClInclude Include="BulkQuote.h" />
     <ClInclude Include="CopyControlPtrTest.h" />
     <ClInclude Include="CopyControlTest.h" />
+    <ClInclude Include="DebugDelete.h" />
     <ClInclude Include="DiskQuote.h" />
     <ClInclude Include="Folder.h" />
     <ClInclude Include="Foo.h" />
@@ -168,12 +171,16 @@
     <ClInclude Include="QueryBase.h" />
     <ClInclude Include="QueryHistory.h" />
     <ClInclude Include="QueryResult.h" />
+    <ClInclude Include="Screen.h" />
+    <ClInclude Include="SharedPointer.h" />
     <ClInclude Include="TextQuery.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Quote.h" />
     <ClInclude Include="StrVec.h" />
+    <ClInclude Include="UniquePointer.h" />
+    <ClInclude Include="Vec.h" />
     <ClInclude Include="WordQuery.h" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +191,7 @@
     <ClCompile Include="BulkQuote.cpp" />
     <ClCompile Include="CopyControlPtrTest.cpp" />
     <ClCompile Include="CopyControlTest.cpp" />
+    <ClCompile Include="DebugDelete.cpp" />
     <ClCompile Include="DiskQuote.cpp" />
     <ClCompile Include="Folder.cpp" />
     <ClCompile Include="Foo.cpp" />

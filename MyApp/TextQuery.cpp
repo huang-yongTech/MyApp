@@ -4,12 +4,13 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include "DebugDelete.h"
 
 //构造函数，读取输入文件，并建立单词到行号的map映射
-//这里为filesVectorP分配了一个新的内存
-TextQuery::TextQuery(ifstream& fileStream) :filesVectorP(new vector<string>) {
+//这里为filesVectorP分配了一个新的内存（并使用了我们自己定义的删除指针方法）
+TextQuery::TextQuery(ifstream& fileStream) : filesVectorP(new vector<string>, DebugDelete()) {
 	using resultType = map<string, shared_ptr<set<lineNo>>>::mapped_type;
-	
+
 	string lineText;
 	while (getline(fileStream, lineText)) {
 		//将文本一行一行的保存到集合中
