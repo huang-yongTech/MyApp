@@ -15,8 +15,9 @@ class Vec {
 
 	friend std::ostream& operator<<(std::ostream& os, const Vec<T>& strVec) {
 		for (T* first = strVec.begin(); first != strVec.end(); first++) {
-			os << *first << std::endl;
+			os << *first << " ";
 		}
+		os << std::endl;
 
 		return os;
 	}
@@ -75,6 +76,12 @@ public:
 	void push_back(const T& t);
 
 	void push_back(T&& t);
+
+	//使用构造的方式向容器中添加元素
+	//重点备注：这里虽然说是可变模板参数，但是一次只能接收一个参数，如果一次传入多个参数，
+	//会导致未知错误（不知道这是不是设计上的bug？）
+	template<typename...Args>
+	void emplace_back(Args&& ...args);
 
 	//返回容器当前包含元素的大小
 	std::size_t size() const;
@@ -224,6 +231,15 @@ void Vec<T>::push_back(T&& t) {
 	alloc.construct(firstFree++, std::move(t));
 }
 
+template<typename T>
+template<typename...Args>
+inline void Vec<T>::emplace_back(Args&& ...args) {
+	check_n_alloc();
+	std::cout << size() << std::endl;
+	std::cout << sizeof...(args) << std::endl;
+	alloc.construct(firstFree++, std::forward<Args>(args)...);
+}
+
 //返回容器当前包含元素的大小
 template<typename T>
 std::size_t Vec<T>::size() const {
@@ -303,7 +319,7 @@ void Vec<T>::free() {
 		}*/
 
 		//为什么要捕获this参数？
-		std::for_each(elements, firstFree, [this](T & t) {alloc.destroy(&t); });
+		std::for_each(elements, firstFree, [this](T& t) {alloc.destroy(&t); });
 
 		alloc.deallocate(elements, cap - elements);
 	}

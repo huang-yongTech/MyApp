@@ -51,6 +51,10 @@ public:
 
 	void push_back(std::string&& str);
 
+	//同样一次只能接收一个参数，虽然这是可变模板参数，参考Vec.h中的同名函数
+	template<typename...Args>
+	void emplace_back(Args&& ...args);
+
 	//返回容器当前包含元素的大小
 	std::size_t size() const;
 
@@ -99,6 +103,12 @@ private:
 	//当StrVec当前空间用完时，为其重新分配内存，新内存的容量大小为n，并将原容器中的元素移动到新内存中
 	void alloc_n_move(std::size_t newCapacity);
 };
+
+template<typename...Args>
+void StrVec::emplace_back(Args&& ...args) {
+	check_n_alloc();
+	alloc.construct(firstFree++, std::forward<Args>(args)...);
+}
 
 std::ostream& operator<<(std::ostream& os, const StrVec& strVec);
 
