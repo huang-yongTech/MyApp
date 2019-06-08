@@ -3,6 +3,7 @@
 
 #include <map>
 #include "QueryResult.h"
+#include <tuple>
 
 class TextQuery {
 
@@ -15,6 +16,9 @@ public:
 
 	//查询单词
 	QueryResult query(const std::string& word) const;
+
+	//第17章3题
+	std::tuple<string, shared_ptr<set<lineNo>>, shared_ptr<vector<string>>> queryTuple(const std::string& word) const;
 
 	void runQuries() const;
 

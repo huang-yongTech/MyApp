@@ -6,6 +6,8 @@
 #include <iostream>
 #include "DebugDelete.h"
 
+using lineNo = std::vector<std::string>::size_type;
+
 //构造函数，读取输入文件，并建立单词到行号的map映射
 //这里为filesVectorP分配了一个新的内存（并使用了我们自己定义的删除指针方法）
 TextQuery::TextQuery(ifstream& fileStream) : filesVectorP(new vector<string>, DebugDelete()) {
@@ -64,6 +66,17 @@ QueryResult TextQuery::query(const string& word) const {
 		return QueryResult(word, noData, filesVectorP);
 	}
 	return QueryResult(word, location->second, filesVectorP);
+}
+
+tuple<string, shared_ptr<set<lineNo>>, shared_ptr<vector<string>>> TextQuery::queryTuple(const string& word) const {
+	//如果没有找到，返回一个空的对象
+	shared_ptr<set<lineNo>> noData(new set<lineNo>);
+
+	map<string, shared_ptr<set<lineNo>>>::const_iterator location = linesMap.find(word);
+	if (location == linesMap.end()) {
+		return tuple<string, shared_ptr<set<lineNo>>, shared_ptr<vector<string>>>(word, noData, filesVectorP);
+	}
+	return tuple<string, shared_ptr<set<lineNo>>, shared_ptr<vector<string>>>(word, location->second, filesVectorP);
 }
 
 TextQuery::~TextQuery() {

@@ -10,6 +10,7 @@ class Folder {
 	friend class Message;
 
 public:
+
 	Folder();
 
 	Folder(const Folder& folder);

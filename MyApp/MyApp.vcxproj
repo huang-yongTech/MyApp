@@ -158,6 +158,8 @@
     <ClInclude Include="Blob.h" />
     <ClInclude Include="BlobPtr.h" />
     <ClInclude Include="BulkQuote.h" />
+    <ClInclude Include="Chapter16.h" />
+    <ClInclude Include="Chapter17.h" />
     <ClInclude Include="CopyControlPtrTest.h" />
     <ClInclude Include="CopyControlTest.h" />
     <ClInclude Include="DebugDelete.h" />
@@ -171,6 +173,7 @@
     <ClInclude Include="QueryBase.h" />
     <ClInclude Include="QueryHistory.h" />
     <ClInclude Include="QueryResult.h" />
+    <ClInclude Include="SalesData.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="SharedPointer.h" />
     <ClInclude Include="TextQuery.h" />
@@ -202,6 +205,7 @@
     <ClCompile Include="QueryBase.cpp" />
     <ClCompile Include="QueryHistory.cpp" />
     <ClCompile Include="QueryResult.cpp" />
+    <ClCompile Include="SalesData.cpp" />
     <ClCompile Include="TextQuery.cpp" />
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="Main.cpp" />
