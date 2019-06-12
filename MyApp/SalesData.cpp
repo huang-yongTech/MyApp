@@ -74,8 +74,6 @@ SalesData& operator+(const SalesData& lhs, const SalesData& rhs) {
 	return result;
 }
 
-
-
 ostream& operator<<(ostream& os, const SalesData& salesData) {
 	os << "isbn: " << salesData.isbn() <<
 		" unitsSold:" << salesData.unitsSold <<

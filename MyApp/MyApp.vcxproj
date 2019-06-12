@@ -192,6 +192,7 @@
     <ClCompile Include="Basket.cpp" />
     <ClCompile Include="BinaryQuery.cpp" />
     <ClCompile Include="BulkQuote.cpp" />
+    <ClCompile Include="Chapter17.cpp" />
     <ClCompile Include="CopyControlPtrTest.cpp" />
     <ClCompile Include="CopyControlTest.cpp" />
     <ClCompile Include="DebugDelete.cpp" />

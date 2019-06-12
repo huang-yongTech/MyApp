@@ -10,6 +10,7 @@
 #include <iostream>
 #include <numeric>
 #include <bitset>
+#include <regex>
 
 //第17章习题
 class Chapter17 {
@@ -116,6 +117,63 @@ public:
 		resultBit.flip();
 		std::cout << resultBit.count() << std::endl;
 	}
+
+	//17.15
+	void regexWord() {
+		std::string patten("[^c]ei");
+		patten = "[[:alpha:]]*" + patten + "[[:alpha:]]*";
+		try {
+			std::regex r(patten, std::regex::icase);
+			std::smatch results;
+
+			std::string word;
+			std::cout << "请输入待匹配的单词：" << std::endl;
+			while (std::cin >> word && word != "q") {
+
+				if (std::regex_search(word, results, r)) {
+					std::cout << "符合匹配： " << results.str() << std::endl;
+				} else {
+					std::cout << "不符合匹配： " << word << std::endl;
+				}
+
+				std::cout << "请输入带匹配的单词，输入q退出！" << std::endl;
+			}
+		} catch (std::regex_error e) {
+			std::cout << e.what() << " 出错了 " << e.code() << std::endl;
+		}
+	}
+
+	//17.17
+	void regexWord1() {
+		std::string patten("[^c]ei");
+		patten = "[[:alpha:]]*" + patten + "[[:alpha:]]*";
+		try {
+			std::regex r(patten, std::regex::icase);
+			std::smatch results;
+
+			std::string word;
+			std::cout << "请输入待匹配的单词：" << std::endl;
+			getline(std::cin, word);
+			for (std::sregex_iterator it(word.begin(), word.end(), r), it_end; it != it_end; ++it) {
+				std::cout << it->str() << std::endl;;
+			}
+		} catch (std::regex_error e) {
+			std::cout << e.what() << " 出错了 " << e.code() << std::endl;
+		}
+	}
+
+	//17.20 17.22
+	void regexPhone();
+
+	bool validPhone(const std::smatch& m);
+
+	//17.23
+	void regexPostCode();
+
+	bool validPostCode(const std::smatch& m);
+
+	//17.24
+	void regexReplaceNum();
 };
 
 #endif
