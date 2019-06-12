@@ -174,6 +174,15 @@ public:
 
 	//17.24
 	void regexReplaceNum();
+
+	//17.28
+	void randomNumber();
+
+	//17.29
+	void randomNumber(unsigned long seed);
+
+	//17.30
+	void randomNumber(unsigned long seed, unsigned long min, unsigned long max);
 };
 
 #endif

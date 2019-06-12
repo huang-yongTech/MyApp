@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Chapter17.h"
 #include <fstream>
+#include <random>
 
 using namespace std;
 
@@ -95,6 +96,31 @@ void Chapter17::regexReplaceNum() {
 	while (getline(fileStream, s)) {
 		cout << regex_replace(s, r, fmt) << endl;
 	}
+}
+
+void Chapter17::randomNumber() {
+	//在实际开发中，需要将随机数引擎和随机数发生器声明为static，
+	//只有这样程序每次运行时，均会生成不同的随机数
+	default_random_engine e;
+	uniform_int_distribution<unsigned> u(0, 9);
+	cout << u(e) << endl;
+}
+
+void Chapter17::randomNumber(unsigned long seed) {
+	default_random_engine e(seed);
+	uniform_int_distribution<unsigned> u(0, 9);
+	cout << u(e) << endl;
+}
+
+void Chapter17::randomNumber(unsigned long seed, unsigned long min, unsigned long max) {
+	//好像声明为static每次也会生成相同的随机序列
+	static default_random_engine e(seed);
+	static uniform_int_distribution<unsigned> u(min, max);
+
+	for (int i = 0; i < 3; ++i) {
+		cout << u(e) << ",";
+	}
+	cout << endl;
 }
 
 
