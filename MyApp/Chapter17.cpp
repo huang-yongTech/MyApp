@@ -123,4 +123,37 @@ void Chapter17::randomNumber(unsigned long seed, unsigned long min, unsigned lon
 	cout << endl;
 }
 
+void Chapter17::seekStream() {
+	fstream inOutStream("..\\outerfile\\copyOut.txt", fstream::in | fstream::out | fstream::ate);
+	if (!inOutStream) {
+		cerr << "打开文件出错！" << endl;
+		return;
+	}
+
+	inOutStream << "\n";
+
+	fstream::pos_type endMark = inOutStream.tellg();
+	inOutStream.seekg(0, fstream::beg);
+
+	string line;
+	//记录当前读取的一行大小
+	size_t currSize = 0;
+	while (inOutStream.tellg() != endMark && getline(inOutStream, line)) {
+		currSize += line.size() + 1;
+		fstream::pos_type currMark = inOutStream.tellg();
+
+		inOutStream.seekp(0, fstream::end);
+		inOutStream << currSize;
+		
+		//如果没有读取到最后一行，则输入空格
+		if (currMark != endMark) {
+			inOutStream << " ";
+		}
+
+		inOutStream.seekg(currMark);
+	}
+
+	inOutStream.seekp(0, fstream::end);
+}
+
 

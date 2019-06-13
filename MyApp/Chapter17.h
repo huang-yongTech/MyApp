@@ -183,6 +183,9 @@ public:
 
 	//17.30
 	void randomNumber(unsigned long seed, unsigned long min, unsigned long max);
+
+	//17.39
+	void seekStream();
 };
 
 #endif
