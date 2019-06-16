@@ -6,30 +6,33 @@
 #include "QueryBase.h"
 #include "Query.h"
 
-class NotQuery : public QueryBase {
+namespace chapter15 {
 
-	friend inline Query operator~(const Query& q);
+	class NotQuery : public QueryBase {
 
-public:
+		friend inline Query operator~(const Query& q);
 
-	NotQuery();
+	public:
 
-	NotQuery(const Query& query);
+		NotQuery();
 
-	~NotQuery();
+		NotQuery(const Query& query);
 
-private:
+		~NotQuery();
 
-	QueryResult eval(const TextQuery& textQuery) const override;
+	private:
 
-	std::string rep() const override;
+		chapter12::QueryResult eval(const chapter12::TextQuery& textQuery) const override;
 
-	Query query;
-};
+		std::string rep() const override;
 
-inline Query operator~(const Query& q) {
-	//这里是隐士调用了Query类的接受shared_ptr参数的构造函数
-	return std::shared_ptr<QueryBase>(new NotQuery(q));
+		Query query;
+	};
+
+	inline Query operator~(const Query& q) {
+		//这里是隐士调用了Query类的接受shared_ptr参数的构造函数
+		return std::shared_ptr<QueryBase>(new NotQuery(q));
+	}
 }
 
 #endif

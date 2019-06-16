@@ -4,21 +4,24 @@
 #include <vector>
 #include "Query.h"
 
-class QueryHistory {
+namespace chapter15 {
 
-public:
+	class QueryHistory {
 
-	QueryHistory();
+	public:
 
-	~QueryHistory();
+		QueryHistory();
 
-	Query& operator[](const std::size_t& pos) const;
+		~QueryHistory();
 
-	void add(const Query& query);
+		Query& operator[](const std::size_t& pos) const;
 
-private:
+		void add(const Query& query);
 
-	vector<std::shared_ptr<Query>> historyVec;
-};
+	private:
+
+		std::vector<std::shared_ptr<Query>> historyVec;
+	};
+}
 
 #endif

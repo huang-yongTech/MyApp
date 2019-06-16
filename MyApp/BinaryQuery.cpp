@@ -4,17 +4,20 @@
 
 using namespace std;
 
-BinaryQuery::BinaryQuery() {
-}
+namespace chapter15 {
 
-BinaryQuery::BinaryQuery(const Query& lQuery, const Query& rQuery, string operatorName)
-	:lQuery(lQuery), rQuery(rQuery), operatorName(operatorName) {
-	cout << "BinaryQuery(const Query& lQuery, const Query& rQuery, string operatorName)" << endl;
-}
+	BinaryQuery::BinaryQuery() {
+	}
 
-BinaryQuery::~BinaryQuery() {
-}
+	BinaryQuery::BinaryQuery(const Query& lQuery, const Query& rQuery, string operatorName)
+		:lQuery(lQuery), rQuery(rQuery), operatorName(operatorName) {
+		cout << "BinaryQuery(const Query& lQuery, const Query& rQuery, string operatorName)" << endl;
+	}
 
-string BinaryQuery::rep() const {
-	return "(" + lQuery.rep() + " " + operatorName + " " + rQuery.rep() + ")";
+	BinaryQuery::~BinaryQuery() {
+	}
+
+	string BinaryQuery::rep() const {
+		return "(" + lQuery.rep() + " " + operatorName + " " + rQuery.rep() + ")";
+	}
 }

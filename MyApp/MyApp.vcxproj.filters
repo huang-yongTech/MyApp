@@ -117,6 +117,18 @@
     <ClInclude Include="Chapter17.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="OutOfStockError.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IsbnMismatchError.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter19.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Token.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -201,6 +213,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Chapter17.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OutOfStockError.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IsbnMismatchError.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter19.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Token.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

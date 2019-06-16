@@ -7,43 +7,46 @@
 #include "QueryBase.h"
 #include <ostream>
 
-class Query {
+namespace chapter15 {
 
-	friend inline Query operator~(const Query& q);
+	class Query {
 
-	friend inline Query operator|(const Query& lq, const Query& rq);
+		friend inline Query operator~(const Query& q);
 
-	friend inline Query operator&(const Query& lq, const Query& rq);
+		friend inline Query operator|(const Query& lq, const Query& rq);
 
-	friend inline std::ostream& operator<<(std::ostream& os, const Query& query);
+		friend inline Query operator&(const Query& lq, const Query& rq);
 
-public:
+		friend inline std::ostream& operator<<(std::ostream& os, const Query& query);
 
-	Query();
+	public:
 
-	Query(const std::string& str);
+		Query();
 
-	~Query();
+		Query(const std::string& str);
 
-	QueryResult eval(const TextQuery& textQuery) const {
-		return queryBase->eval(textQuery);
+		~Query();
+
+		chapter12::QueryResult eval(const chapter12::TextQuery& textQuery) const {
+			return queryBase->eval(textQuery);
+		}
+
+		std::string rep() const {
+			return queryBase->rep();
+		}
+
+	private:
+
+		Query(std::shared_ptr<QueryBase> queryBase);
+
+		//成员变量（保存基类及其派生类的指针）
+		std::shared_ptr<QueryBase> queryBase;
+	};
+
+	inline std::ostream& operator<<(std::ostream& os, const Query& query) {
+		os << query.rep() << std::endl;
+		return os;
 	}
-
-	std::string rep() const {
-		return queryBase->rep();
-	}
-
-private:
-
-	Query(std::shared_ptr<QueryBase> queryBase);
-
-	//成员变量（保存基类及其派生类的指针）
-	std::shared_ptr<QueryBase> queryBase;
-};
-
-inline std::ostream& operator<<(std::ostream& os, const Query& query) {
-	os << query.rep() << endl;
-	return os;
 }
 
 #endif

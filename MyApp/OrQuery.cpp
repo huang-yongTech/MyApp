@@ -3,25 +3,29 @@
 #include <iostream>
 
 using namespace std;
+using namespace chapter12;
 
-OrQuery::OrQuery() {
-}
+namespace chapter15 {
 
-OrQuery::OrQuery(const Query& lQuery, const Query& rQuery)
-	:BinaryQuery(lQuery, rQuery, "|") {
-	cout << "OrQuery(const Query& lQuery, const Query& rQuery)" << endl;
-}
+	OrQuery::OrQuery() {
+	}
 
-OrQuery::~OrQuery() {
-}
+	OrQuery::OrQuery(const Query& lQuery, const Query& rQuery)
+		:BinaryQuery(lQuery, rQuery, "|") {
+		cout << "OrQuery(const Query& lQuery, const Query& rQuery)" << endl;
+	}
 
-QueryResult OrQuery::eval(const TextQuery& textQuery) const {
-	QueryResult leftResult = lQuery.eval(textQuery);
-	QueryResult rightResult = rQuery.eval(textQuery);
+	OrQuery::~OrQuery() {
+	}
 
-	shared_ptr<set<lineNo>> resultLines =
-		make_shared<set<lineNo>>(leftResult.begin(), leftResult.end());
-	resultLines->insert(rightResult.begin(), rightResult.end());
+	QueryResult OrQuery::eval(const TextQuery& textQuery) const {
+		QueryResult leftResult = lQuery.eval(textQuery);
+		QueryResult rightResult = rQuery.eval(textQuery);
 
-	return QueryResult(rep(), resultLines, leftResult.getFile());
+		shared_ptr<set<lineNo>> resultLines =
+			make_shared<set<lineNo>>(leftResult.begin(), leftResult.end());
+		resultLines->insert(rightResult.begin(), rightResult.end());
+
+		return QueryResult(rep(), resultLines, leftResult.getFile());
+	}
 }

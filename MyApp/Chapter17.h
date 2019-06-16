@@ -16,6 +16,7 @@
 class Chapter17 {
 
 public:
+
 	typedef std::tuple<std::vector<SalesData>::size_type,
 		std::vector<SalesData>::const_iterator,
 		std::vector<SalesData>::const_iterator> matches;

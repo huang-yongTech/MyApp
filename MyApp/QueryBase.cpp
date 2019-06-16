@@ -4,9 +4,13 @@
 
 using namespace std;
 
-QueryBase::QueryBase() {
-	cout << "调用QueryBase()" << endl;
+namespace chapter15 {
+
+	QueryBase::QueryBase() {
+		cout << "调用QueryBase()" << endl;
+	}
+
+	QueryBase::~QueryBase() {
+	}
 }
 
-QueryBase::~QueryBase() {
-}

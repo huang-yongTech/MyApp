@@ -4,21 +4,24 @@
 #include "QueryBase.h"
 #include "Query.h"
 
-class BinaryQuery : public QueryBase {
+namespace chapter15 {
 
-protected:
+	class BinaryQuery : public QueryBase {
 
-	BinaryQuery();
+	protected:
 
-	BinaryQuery(const Query& lQuery, const Query& rQuery, std::string operatorName);
+		BinaryQuery();
 
-	~BinaryQuery();
+		BinaryQuery(const Query& lQuery, const Query& rQuery, std::string operatorName);
 
-	std::string rep() const override;
+		~BinaryQuery();
 
-	Query lQuery, rQuery;
+		std::string rep() const override;
 
-	std::string operatorName;
-};
+		Query lQuery, rQuery;
+
+		std::string operatorName;
+	};
+}
 
 #endif

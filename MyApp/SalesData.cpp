@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SalesData.h"
+#include "IsbnMismatchError.h"
 
 using namespace std;
 
@@ -11,6 +12,34 @@ SalesData::SalesData(const std::string& s) : bookNo(s), unitsSold(0), renvenue(0
 
 SalesData::SalesData(const std::string& s, unsigned unitsSold, double renvenue)
 	: bookNo(s), unitsSold(unitsSold), renvenue(renvenue) {
+}
+
+SalesData::SalesData(const SalesData& salesData)
+	: bookNo(salesData.bookNo), unitsSold(salesData.unitsSold), renvenue(salesData.renvenue) {
+}
+
+SalesData& SalesData::operator=(const SalesData& salesData) {
+	if (*this != salesData) {
+		bookNo = salesData.bookNo;
+		unitsSold = salesData.unitsSold;
+		renvenue = salesData.renvenue;
+	}
+
+	return *this;
+}
+
+SalesData::SalesData(SalesData&& salesData) noexcept
+	:bookNo(std::move(salesData.bookNo)), unitsSold(std::move(salesData.unitsSold)), renvenue(std::move(salesData.renvenue)) {
+}
+
+SalesData& SalesData::operator=(SalesData&& salesData) noexcept {
+	if (*this != salesData) {
+		bookNo = std::move(salesData.bookNo);
+		unitsSold = std::move(salesData.unitsSold);
+		renvenue = std::move(salesData.renvenue);
+	}
+
+	return *this;
 }
 
 SalesData::~SalesData() {
@@ -59,7 +88,16 @@ bool operator==(const SalesData& lhs, const SalesData& rhs) {
 		lhs.renvenue == rhs.renvenue;
 }
 
+bool operator!=(const SalesData& lhs, const SalesData& rhs) {
+	return !(lhs == rhs);
+}
+
 SalesData& operator+=(const SalesData& lhs, const SalesData& rhs) {
+	//第18章9题，这里手动抛出一个异常
+	if (lhs.isbn() != rhs.isbn()) {
+		throw IsbnMismatchError("wrongs isbn", lhs.isbn(), rhs.isbn());
+	}
+
 	SalesData result = lhs;
 	result.unitsSold += rhs.unitsSold;
 	result.renvenue += rhs.renvenue;

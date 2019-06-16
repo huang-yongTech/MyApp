@@ -2,6 +2,8 @@
 #include "StrVec.h"
 #include <algorithm>
 #include <iostream>
+#include <cstdlib>
+#include <stdexcept>
 
 using namespace std;
 
@@ -161,7 +163,7 @@ void StrVec::free() {
 		}*/
 
 		//为什么要捕获this参数？
-		for_each(elements, firstFree, [this](string & str) {alloc.destroy(&str); });
+		for_each(elements, firstFree, [this](string& str) {alloc.destroy(&str); });
 
 		alloc.deallocate(elements, cap - elements);
 	}
@@ -203,7 +205,21 @@ void StrVec::alloc_n_move(size_t newCapacity) {
 	cap = elements + newCapacity;
 }
 
-ostream& operator<<(std::ostream & os, const StrVec & strVec) {
+//void* operator new(size_t t) {
+//	cout << "调用自定义new" << endl;
+//	if (void* ptr = malloc(t)) {
+//		return ptr;
+//	} else {
+//		throw bad_alloc();
+//	}
+//}
+
+//void operator delete(void* ptr) noexcept {
+//	cout << "调用自定义delete" << endl;
+//	std::free(ptr);
+//}
+
+ostream& operator<<(std::ostream& os, const StrVec& strVec) {
 	for (string* first = strVec.begin(); first != strVec.end(); first++) {
 		os << *first << endl;
 	}
@@ -211,26 +227,26 @@ ostream& operator<<(std::ostream & os, const StrVec & strVec) {
 	return os;
 }
 
-bool operator==(const StrVec & lhs, const StrVec & rhs) {
+bool operator==(const StrVec& lhs, const StrVec& rhs) {
 	return (lhs.size() == rhs.size()) && equal(lhs.begin(), lhs.end(), rhs.begin());
 }
 
-bool operator!=(const StrVec & lhs, const StrVec & rhs) {
+bool operator!=(const StrVec& lhs, const StrVec& rhs) {
 	return !(lhs == rhs);
 }
 
-bool operator<(const StrVec & lhs, const StrVec & rhs) {
+bool operator<(const StrVec& lhs, const StrVec& rhs) {
 	return lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
 }
 
-bool operator>(const StrVec & lhs, const StrVec & rhs) {
+bool operator>(const StrVec& lhs, const StrVec& rhs) {
 	return (lhs != rhs) && !(lhs < rhs);
 }
 
-bool operator<=(const StrVec & lhs, const StrVec & rhs) {
+bool operator<=(const StrVec& lhs, const StrVec& rhs) {
 	return !(lhs > rhs);
 }
 
-bool operator>=(const StrVec & lhs, const StrVec & rhs) {
+bool operator>=(const StrVec& lhs, const StrVec& rhs) {
 	return !(lhs < rhs);
 }

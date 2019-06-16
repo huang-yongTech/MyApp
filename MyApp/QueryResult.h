@@ -6,40 +6,42 @@
 #include <memory>
 #include <string>
 
-using namespace std;
+namespace chapter12 {
 
-class QueryResult {
+	class QueryResult {
 
-	friend ostream& operator<<(ostream& os, const QueryResult& result);
+		friend std::ostream& operator<<(std::ostream& os, const QueryResult& result);
 
-	friend ostream& print(ostream& os, const QueryResult& result, const std::size_t& start, const std::size_t& end);
+		friend std::ostream& print(std::ostream& os, const QueryResult& result, const std::size_t& start, const std::size_t& end);
 
-public:
+	public:
 
-	using lineNo = vector<string>::size_type;
+		using lineNo = std::vector<std::string>::size_type;
 
-	QueryResult(string word, shared_ptr<set<lineNo>> linesSetP, shared_ptr<vector<string>> fileVectorP);
+		QueryResult(std::string word, std::shared_ptr<std::set<lineNo>> linesSetP,
+			std::shared_ptr<std::vector<std::string>> fileVectorP);
 
-	~QueryResult();
+		~QueryResult();
 
-	set<lineNo>::iterator begin() const;
+		std::set<lineNo>::iterator begin() const;
 
-	set<lineNo>::iterator end() const;
+		std::set<lineNo>::iterator end() const;
 
-	shared_ptr<vector<string>> getFile();
+		std::shared_ptr<std::vector<std::string>> getFile();
 
-private:
-	string word;//查询单词
-	//这里使用指针是为了避免拷贝，以免文件内容过大导致内存溢出
-	//出现的行号
-	shared_ptr<set<lineNo>> linesSetP;
-	//输入的文件，在vector中以一行一行的形式保存
-	shared_ptr<vector<string>> fileVectorP;
-};
+	private:
+		std::string word;//查询单词
+		//这里使用指针是为了避免拷贝，以免文件内容过大导致内存溢出
+		//出现的行号
+		std::shared_ptr<std::set<lineNo>> linesSetP;
+		//输入的文件，在vector中以一行一行的形式保存
+		std::shared_ptr<std::vector<std::string>> fileVectorP;
+	};
 
-ostream& operator<<(ostream& os, const QueryResult& result);
+	std::ostream& operator<<(std::ostream& os, const QueryResult& result);
 
-ostream& print(ostream& os, const QueryResult& result, const std::size_t& start, const std::size_t& end);
+	std::ostream& print(std::ostream& os, const QueryResult& result, const std::size_t& start, const std::size_t& end);
+}
 
 #endif // _MEMORY_RESULT_H_
 

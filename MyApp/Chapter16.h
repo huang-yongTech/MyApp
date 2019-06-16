@@ -7,7 +7,7 @@
 
 //第16章习题
 class Chapter16 {
-	
+
 public:
 
 	//比较函数模板最好使用同一种比较操作符，这样可以节省调用者的工作量
@@ -63,7 +63,7 @@ public:
 	}
 
 	template<typename Arr>
-	auto end(const Arr& arr)->decltype(arr.end()) {
+	auto end(const Arr& arr) -> decltype(arr.end()) {
 		return arr.end();
 	}
 

@@ -6,25 +6,28 @@
 #include "QueryBase.h"
 #include "Query.h"
 
-class WordQuery : public QueryBase {
+namespace chapter15 {
 
-	friend class Query;
+	class WordQuery : public QueryBase {
 
-public:
+		friend class Query;
 
-	WordQuery();
+	public:
 
-	WordQuery(const std::string& queryWord);
+		WordQuery();
 
-	~WordQuery();
+		WordQuery(const std::string& queryWord);
 
-private:
+		~WordQuery();
 
-	QueryResult eval(const TextQuery& textQuery) const override;
+	private:
 
-	std::string rep() const override;
+		chapter12::QueryResult eval(const chapter12::TextQuery& textQuery) const override;
 
-	std::string queryWord;
-};
+		std::string rep() const override;
+
+		std::string queryWord;
+	};
+}
 
 #endif

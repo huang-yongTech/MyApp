@@ -5,16 +5,19 @@
 
 using namespace std;
 
-Query::Query() {
-}
+namespace chapter15 {
 
-Query::Query(const string& str) : queryBase(new WordQuery(str)) {
-	cout << "Query(const string& str)" << endl;
-}
+	Query::Query() {
+	}
 
-Query::Query(shared_ptr<QueryBase> queryBase) : queryBase(queryBase) {
-	cout << "Query(shared_ptr<QueryBase> queryBase)" << endl;
-}
+	Query::Query(const string& str) : queryBase(new WordQuery(str)) {
+		cout << "Query(const string& str)" << endl;
+	}
 
-Query::~Query() {
+	Query::Query(shared_ptr<QueryBase> queryBase) : queryBase(queryBase) {
+		cout << "Query(shared_ptr<QueryBase> queryBase)" << endl;
+	}
+
+	Query::~Query() {
+	}
 }

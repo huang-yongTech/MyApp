@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include <ostream>
+#include <iostream>
 
 //重点注意：当有其他模板需要访问本模板的私有成员时，需要将其他模板类声明为该模板类的友元
 //同时在该模板类的前面添加如下代码，同时不能include其他模板的头文件，否则会报错
@@ -72,9 +73,18 @@ template<typename T>
 Blob<T>::Blob() {
 }
 
+//template<typename T>
+//Blob<T>::Blob(std::initializer_list<T> iList)
+//	: dataVec(std::make_shared<std::vector<T>>(std::vector<T>(iList))) {
+//}
+
+//第18章7题
 template<typename T>
 Blob<T>::Blob(std::initializer_list<T> iList)
-	: dataVec(std::make_shared<std::vector<T>>(std::vector<T>(iList))) {
+	try : dataVec(std::make_shared<std::vector<T>>(std::vector<T>(iList))) {
+
+} catch (const std::bad_alloc &e){
+	std::cout << e.what() << std::endl;
 }
 
 template<typename T>

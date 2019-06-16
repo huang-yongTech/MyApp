@@ -160,15 +160,18 @@
     <ClInclude Include="BulkQuote.h" />
     <ClInclude Include="Chapter16.h" />
     <ClInclude Include="Chapter17.h" />
+    <ClInclude Include="Chapter19.h" />
     <ClInclude Include="CopyControlPtrTest.h" />
     <ClInclude Include="CopyControlTest.h" />
     <ClInclude Include="DebugDelete.h" />
     <ClInclude Include="DiskQuote.h" />
     <ClInclude Include="Folder.h" />
     <ClInclude Include="Foo.h" />
+    <ClInclude Include="IsbnMismatchError.h" />
     <ClInclude Include="MapTest.h" />
     <ClInclude Include="NotQuery.h" />
     <ClInclude Include="OrQuery.h" />
+    <ClInclude Include="OutOfStockError.h" />
     <ClInclude Include="Query.h" />
     <ClInclude Include="QueryBase.h" />
     <ClInclude Include="QueryHistory.h" />
@@ -182,6 +185,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Quote.h" />
     <ClInclude Include="StrVec.h" />
+    <ClInclude Include="Token.h" />
     <ClInclude Include="UniquePointer.h" />
     <ClInclude Include="Vec.h" />
     <ClInclude Include="WordQuery.h" />
@@ -193,15 +197,18 @@
     <ClCompile Include="BinaryQuery.cpp" />
     <ClCompile Include="BulkQuote.cpp" />
     <ClCompile Include="Chapter17.cpp" />
+    <ClCompile Include="Chapter19.cpp" />
     <ClCompile Include="CopyControlPtrTest.cpp" />
     <ClCompile Include="CopyControlTest.cpp" />
     <ClCompile Include="DebugDelete.cpp" />
     <ClCompile Include="DiskQuote.cpp" />
     <ClCompile Include="Folder.cpp" />
     <ClCompile Include="Foo.cpp" />
+    <ClCompile Include="IsbnMismatchError.cpp" />
     <ClCompile Include="MapTest.cpp" />
     <ClCompile Include="NotQuery.cpp" />
     <ClCompile Include="OrQuery.cpp" />
+    <ClCompile Include="OutOfStockError.cpp" />
     <ClCompile Include="Query.cpp" />
     <ClCompile Include="QueryBase.cpp" />
     <ClCompile Include="QueryHistory.cpp" />
@@ -219,6 +226,7 @@
     </ClCompile>
     <ClCompile Include="Quote.cpp" />
     <ClCompile Include="StrVec.cpp" />
+    <ClCompile Include="Token.cpp" />
     <ClCompile Include="WordQuery.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -26,6 +26,7 @@ public:
 	void print();
 
 private:
+
 	std::set<Message*> messageSet;
 };
 

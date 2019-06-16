@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "Blob.h"
+#include <iostream>
 
 //第16章12题
 
@@ -52,13 +53,24 @@ private:
 	std::size_t currPos;
 };
 
+//template <typename T>
+//BlobPtr<T>::BlobPtr() : currPos(0) {
+//}
+
+//第18章7题
 template <typename T>
-BlobPtr<T>::BlobPtr() : currPos(0) {
+BlobPtr<T>::BlobPtr() try : currPos(0) {
+
+} catch (const std::bad_alloc& e) {
+	std::cout << e.what() << std::endl;
 }
 
 template <typename T>
 BlobPtr<T>::BlobPtr(Blob<T>& blob, std::size_t pos)
-	: vecWptr(blob.dataVec), currPos(pos) {
+	try : vecWptr(blob.dataVec), currPos(pos) {
+
+} catch (const std::bad_alloc& e) {
+	std::cout << e.what() << std::endl;
 }
 
 template <typename T>

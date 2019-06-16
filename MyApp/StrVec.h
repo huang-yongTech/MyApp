@@ -124,4 +124,10 @@ bool operator<=(const StrVec& lhs, const StrVec& rhs);
 
 bool operator>=(const StrVec& lhs, const StrVec& rhs);
 
+//第19章1节（自定义的operator new(或operator delete)最好放在类头文件中类定义的外面）
+//void* operator new(size_t t);
+
+//第19章1节
+//void operator delete(void* ptr) noexcept;
+
 #endif

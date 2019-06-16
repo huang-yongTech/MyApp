@@ -3,25 +3,28 @@
 
 #include "BinaryQuery.h"
 
-class OrQuery : public BinaryQuery {
+namespace chapter15 {
 
-	friend inline Query operator|(const Query& lq, const Query& rq);
+	class OrQuery : public BinaryQuery {
 
-public:
+		friend inline Query operator|(const Query& lq, const Query& rq);
 
-	OrQuery();
-	
-	OrQuery(const Query& lQuery, const Query& rQuery);
+	public:
 
-	~OrQuery();
-	
-private:
+		OrQuery();
 
-	QueryResult eval(const TextQuery& textQuery) const override;
-};
+		OrQuery(const Query& lQuery, const Query& rQuery);
 
-inline Query operator|(const Query& lq, const Query& rq) {
-	return std::shared_ptr<QueryBase>(new OrQuery(lq, rq));
+		~OrQuery();
+
+	private:
+
+		chapter12::QueryResult eval(const chapter12::TextQuery& textQuery) const override;
+	};
+
+	inline Query operator|(const Query& lq, const Query& rq) {
+		return std::shared_ptr<QueryBase>(new OrQuery(lq, rq));
+	}
 }
 
 #endif

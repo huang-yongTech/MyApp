@@ -11,6 +11,8 @@ class SalesData {
 
 	friend bool operator==(const SalesData& lhs, const SalesData& rhs);
 
+	friend bool operator!=(const SalesData& lhs, const SalesData& rhs);
+
 	friend SalesData& operator+=(const SalesData& lhs, const SalesData& rhs);
 
 	friend SalesData& operator+(const SalesData& lhs, const SalesData& rhs);
@@ -28,6 +30,14 @@ public:
 	SalesData(const std::string& s);
 
 	SalesData(const std::string& s, unsigned unitsSold, double renvenue);
+
+	SalesData(const SalesData& salesData);
+
+	SalesData& operator=(const SalesData& salesData);
+
+	SalesData(SalesData&& salesData) noexcept;
+
+	SalesData& operator=(SalesData&& salesData) noexcept;
 
 	~SalesData();
 
@@ -52,10 +62,12 @@ private:
 
 bool operator==(const SalesData& lhs, const SalesData& rhs);
 
-SalesData& operator+=(const SalesData& lhs,const SalesData& rhs);
+bool operator!=(const SalesData& lhs, const SalesData& rhs);
+
+SalesData& operator+=(const SalesData& lhs, const SalesData& rhs);
 
 //重载的加法运算符必须使用const修饰，否则会报错
-SalesData& operator+(const SalesData& lhs,const SalesData& rhs);
+SalesData& operator+(const SalesData& lhs, const SalesData& rhs);
 
 std::ostream& operator<<(std::ostream& os, const SalesData& salesData);
 

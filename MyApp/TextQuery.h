@@ -5,34 +5,39 @@
 #include "QueryResult.h"
 #include <tuple>
 
-class TextQuery {
+namespace chapter12 {
 
-public:
-	using lineNo = std::vector<std::string>::size_type;
+	class TextQuery {
 
-	TextQuery() = default;
+	public:
+		using lineNo = std::vector<std::string>::size_type;
 
-	TextQuery(std::ifstream& fileStream);
+		TextQuery() = default;
 
-	//查询单词
-	QueryResult query(const std::string& word) const;
+		TextQuery(std::ifstream& fileStream);
 
-	//第17章3题
-	std::tuple<string, shared_ptr<set<lineNo>>, shared_ptr<vector<string>>> queryTuple(const std::string& word) const;
+		//查询单词
+		QueryResult query(const std::string& word) const;
 
-	void runQuries() const;
+		//第17章3题
+		std::tuple<std::string, std::shared_ptr<std::set<lineNo>>, std::shared_ptr<std::vector<std::string>>>
+			queryTuple(const std::string& word) const;
 
-	void runQuries(std::ifstream& fileStream) const;
+		void runQuries() const;
 
-	~TextQuery();
+		void runQuries(std::ifstream& fileStream) const;
 
-private:
-	//这里使用指针是为了避免拷贝，以免文件内容过大导致内存溢出
-	//单词与其所在行号的映射,一个单词可能会出现在多行，同一行的单词只显示一次
-	std::map<std::string, std::shared_ptr<std::set<lineNo>>> linesMap;
+		~TextQuery();
 
-	std::shared_ptr<std::vector<std::string>> filesVectorP;//输入文件
-};
+	private:
+		//这里使用指针是为了避免拷贝，以免文件内容过大导致内存溢出
+		//单词与其所在行号的映射,一个单词可能会出现在多行，同一行的单词只显示一次
+		std::map<std::string, std::shared_ptr<std::set<lineNo>>> linesMap;
+
+		std::shared_ptr<std::vector<std::string>> filesVectorP;//输入文件
+	};
+
+}
 
 #endif
 

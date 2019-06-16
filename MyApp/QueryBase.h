@@ -6,23 +6,26 @@
 #include "QueryResult.h"
 #include "TextQuery.h"
 
-class QueryBase {
+namespace chapter15 {
 
-	friend class Query;
+	class QueryBase {
 
-protected:
+		friend class Query;
 
-	QueryBase();
+	protected:
 
-	virtual ~QueryBase();
+		QueryBase();
 
-	using lineNo = vector<string>::size_type;
+		virtual ~QueryBase();
 
-private:
+		using lineNo = std::vector<std::string>::size_type;
 
-	virtual QueryResult eval(const TextQuery& textQuery) const = 0;
+	private:
 
-	virtual std::string rep() const = 0;
-};
+		virtual chapter12::QueryResult eval(const chapter12::TextQuery& textQuery) const = 0;
+
+		virtual std::string rep() const = 0;
+	};
+}
 
 #endif

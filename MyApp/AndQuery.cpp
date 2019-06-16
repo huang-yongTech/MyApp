@@ -5,21 +5,26 @@
 #include <iterator>
 
 using namespace std;
+using namespace chapter12;
 
-AndQuery::AndQuery() {
+namespace chapter15 {
+
+	AndQuery::AndQuery() {
+	}
+
+	AndQuery::~AndQuery() {
+	}
+
+	QueryResult AndQuery::eval(const TextQuery& textquery) const {
+		QueryResult leftResult = lQuery.eval(textquery);
+		QueryResult rightResult = rQuery.eval(textquery);
+
+		shared_ptr<set<lineNo>> resultLines = make_shared<set<lineNo>>();
+
+		set_intersection(leftResult.begin(), leftResult.end(),
+			rightResult.begin(), rightResult.end(), inserter(*resultLines, resultLines->begin()));
+
+		return QueryResult(rep(), resultLines, leftResult.getFile());
+	}
 }
 
-AndQuery::~AndQuery() {
-}
-
-QueryResult AndQuery::eval(const TextQuery& textquery) const {
-	QueryResult leftResult = lQuery.eval(textquery);
-	QueryResult rightResult = rQuery.eval(textquery);
-
-	shared_ptr<set<lineNo>> resultLines = make_shared<set<lineNo>>();
-
-	set_intersection(leftResult.begin(), leftResult.end(), 
-		rightResult.begin(), rightResult.end(), inserter(*resultLines,resultLines->begin()));
-
-	return QueryResult(rep(), resultLines, leftResult.getFile());
-}
