@@ -8,8 +8,7 @@
 
 using namespace std;
 
-AlgorithmTest::~AlgorithmTest()
-{
+AlgorithmTest::~AlgorithmTest() {
 
 }
 
@@ -47,11 +46,11 @@ void AlgorithmTest::removeTest() {
 		cout << elem << " ";
 	}
 	cout << endl;
-} 
+}
 
 void AlgorithmTest::removeIfTest() {
 	list<int> sourceList{ 1,2,3,4,5,6,7,8,9 };
-	auto ptr = remove_if(sourceList.begin(), sourceList.end(), [](int i) -> bool {return i % 2 == 0; });
+	list<int>::iterator ptr = remove_if(sourceList.begin(), sourceList.end(), [](int i) -> bool {return i % 2 == 0; });
 
 	//对容器list的相关操作应该优先使用其成员函数，而不是使用通用算法
 	//sourceList.remove_if([](int i) -> int {return i % 2 == 0; });
@@ -68,8 +67,7 @@ void AlgorithmTest::removeIfTest() {
 
 	//正确的打印删除元素后容器剩余的元素
 	cout << "remove_if操作后的列表数据：";
-	for (auto ptr1 = sourceList.begin(); ptr1 != ptr; ptr1++)
-	{
+	for (list<int>::iterator ptr1 = sourceList.begin(); ptr1 != ptr; ptr1++) {
 		cout << *ptr1 << " ";
 	}
 	cout << endl;
@@ -78,7 +76,7 @@ void AlgorithmTest::removeIfTest() {
 void AlgorithmTest::removeCopyIfTest() {
 	list<int> list1{ 1,2,3,4,5,6,7,8,9 };
 	list<int> dstList;
-	//凡是带copy的算法，原容易元素保持不变
+	//凡是带copy的算法，原容器元素保持不变
 	//remove_copy_if将不满足谓词的元素拷贝到目的容器中（相当于删除了满足谓词的元素，将剩余的元素拷贝到目的容器中）
 	remove_copy_if(list1.begin(), list1.end(), back_inserter(dstList), [](int i) {return i % 2; });
 	cout << "remove_copy_if操作后的列表数据：";
