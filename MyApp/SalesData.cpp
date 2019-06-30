@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "SalesData.h"
 #include "IsbnMismatchError.h"
+#include <iostream>
 
 using namespace std;
 
@@ -25,11 +26,14 @@ SalesData& SalesData::operator=(const SalesData& salesData) {
 		renvenue = salesData.renvenue;
 	}
 
+	cout << "调用拷贝赋值运算符" << endl;
+
 	return *this;
 }
 
 SalesData::SalesData(SalesData&& salesData) noexcept
-	:bookNo(std::move(salesData.bookNo)), unitsSold(std::move(salesData.unitsSold)), renvenue(std::move(salesData.renvenue)) {
+	:bookNo(std::move(salesData.bookNo)), unitsSold(std::move(salesData.unitsSold)),
+	renvenue(std::move(salesData.renvenue)) {
 }
 
 SalesData& SalesData::operator=(SalesData&& salesData) noexcept {
@@ -82,6 +86,25 @@ ostream& SalesData::print(ostream& os, SalesData& salesData) {
 	return os;
 }
 
+SalesData& SalesData::operator+(const SalesData& lhs) {
+	//问题备注：为什么这里不是引用就会报错--bad_alloc异常？
+	SalesData& result(*this);
+	result += lhs;
+	return result;
+}
+
+SalesData& SalesData::operator+=(const SalesData& lhs) {
+	//第18章9题，这里手动抛出一个异常
+	if (this->isbn() != lhs.isbn()) {
+		throw IsbnMismatchError("wrongs isbn", this->isbn(), lhs.isbn());
+	}
+
+	this->unitsSold += lhs.unitsSold;
+	this->renvenue += lhs.renvenue;
+
+	return *this;
+}
+
 bool operator==(const SalesData& lhs, const SalesData& rhs) {
 	return lhs.bookNo == rhs.bookNo &&
 		lhs.unitsSold == rhs.unitsSold &&
@@ -90,26 +113,6 @@ bool operator==(const SalesData& lhs, const SalesData& rhs) {
 
 bool operator!=(const SalesData& lhs, const SalesData& rhs) {
 	return !(lhs == rhs);
-}
-
-SalesData& operator+=(const SalesData& lhs, const SalesData& rhs) {
-	//第18章9题，这里手动抛出一个异常
-	if (lhs.isbn() != rhs.isbn()) {
-		throw IsbnMismatchError("wrongs isbn", lhs.isbn(), rhs.isbn());
-	}
-
-	SalesData result = lhs;
-	result.unitsSold += rhs.unitsSold;
-	result.renvenue += rhs.renvenue;
-
-	return result;
-}
-
-SalesData& operator+(const SalesData& lhs, const SalesData& rhs) {
-	SalesData result = lhs;
-	result += rhs;
-
-	return result;
 }
 
 ostream& operator<<(ostream& os, const SalesData& salesData) {

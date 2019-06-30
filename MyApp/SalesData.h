@@ -13,10 +13,6 @@ class SalesData {
 
 	friend bool operator!=(const SalesData& lhs, const SalesData& rhs);
 
-	friend SalesData& operator+=(const SalesData& lhs, const SalesData& rhs);
-
-	friend SalesData& operator+(const SalesData& lhs, const SalesData& rhs);
-
 	friend std::ostream& operator<<(std::ostream& os, const SalesData& salesData);
 
 	friend bool compareIsbn(const SalesData& lhs, const SalesData& rhs);
@@ -51,6 +47,12 @@ public:
 
 	std::ostream& print(std::ostream& os, SalesData& salesData);
 
+	//备注：当把重载运算符作为类的成员时，如果在重载运算符函数体内调用了别的重载运算符，
+	//则需要将该运算符也声明为类的成员，否则会报错。
+	SalesData& operator+(const SalesData& lhs);
+
+	SalesData& operator+=(const SalesData& lhs);
+
 private:
 
 	std::string bookNo;
@@ -63,11 +65,6 @@ private:
 bool operator==(const SalesData& lhs, const SalesData& rhs);
 
 bool operator!=(const SalesData& lhs, const SalesData& rhs);
-
-SalesData& operator+=(const SalesData& lhs, const SalesData& rhs);
-
-//重载的加法运算符必须使用const修饰，否则会报错
-SalesData& operator+(const SalesData& lhs, const SalesData& rhs);
 
 std::ostream& operator<<(std::ostream& os, const SalesData& salesData);
 
